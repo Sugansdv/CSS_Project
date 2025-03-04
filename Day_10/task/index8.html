@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        img {
+            width: 20%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .grid-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            box-shadow: 0 4px 8px gray;
+            border-radius: 8px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex-container p {
+            margin-bottom: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="flex-container">
+                <img src="./assets/laptop.jpg" alt="Laptop">
+                <h3>Laptop Sale</h3>
+                <p>Powerful laptop with latest processor. Limited time offer!</p>
+                <button>Shop Now</button>
+
+            </div>
+        </div>
+        <div class="grid-item">
+            <div class="flex-container">
+                <img src="./assets/shoe.jpg" alt="Laptop">
+                <h3>Running Shoes</h3>
+                <p>Comfortable running shoes for your daily workout.</p>
+                <button>Shop Now</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

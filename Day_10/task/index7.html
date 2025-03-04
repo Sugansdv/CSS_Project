@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 250px);
+            gap: 20px;
+            margin: auto;
+            width: 800px;
+        }
+
+        .image img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            box-shadow: 0 4px 8px gray;
+          border-radius: 8px;
+        }
+        .text {
+            line-height: 2em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="image">
+                    <img src="./assets/laptop.jpg" alt="Laptop">
+                </div>
+                <div class="text">
+                    <h3>Laptop Sale</h3>
+                    <p>Powerful laptop with latest processor. Limited time offer!</p>
+                    <button>Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="image">
+                    <img src="./assets/shoe.jpg" alt="Shoes">
+                </div>
+                <div class="text">
+                    <h3>Running Shoes</h3>
+                    <p>Comfortable running shoes for your daily workout.</p>
+                    <button>Shop Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <div class="image">
+                    <img src="./assets/cof.jpg" alt="Coffee">
+                </div>
+                <div class="text">
+                    <h3>Premium Coffee</h3>
+                    <p>Enjoy the rich aroma of our freshly brewed coffee.</p>
+                    <button>Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto auto;
+        }
+        .header {
+            grid-area: 1/1/2/4;
+            background-color: lightblue;
+            padding: 30px;
+            text-align: center;
+            font-weight: bolder;
+        }
+        .sidebar {
+            grid-column: 1 / 2;
+            grid-row: 2;
+            background-color: lightgreen;
+            padding: 50px;
+            text-align: center;
+        }
+        .main{
+            grid-column: 2/4;
+            grid-row: 2;
+            background-color: lightcoral;
+            padding: 50px;
+            text-align: center;
+            
+        }
+        .footer{
+            grid-column: 1 / 4;
+            grid-row: 3;
+            background-color: lightblue;
+            padding: 30px;
+            text-align: center;
+            font-weight: bolder;
+        }
+        nav a{
+            text-decoration: none;
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <header class="header">My Webpage</header>
+        <main class="main">Welcome to my Webpage</main>
+        <aside class="sidebar"><nav>
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">Contact us</a>
+        </nav></aside>
+        <footer class="footer">&copy 2025 All Rights Reserved</footer>
+    </div>
+</body>
+
+</html>
