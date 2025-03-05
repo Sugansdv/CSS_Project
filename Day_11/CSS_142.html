@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Screen Overlay</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: gray; 
+        }
+        .container {
+            position: relative;
+            width: 400px;
+            height: 50vh;
+            background: blueviolet;
+            text-align: center;
+            border: 2px solid black;
+            margin: 50px auto; 
+        }
+        .text {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="text">Welcome to this Page</div>
+    </div>
+</body>
+</html>

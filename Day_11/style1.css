@@ -1,0 +1,44 @@
+*{ 
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0; 
+} 
+
+header, footer { 
+    background: lightcoral; 
+    color: white; 
+    text-align: center; 
+    padding: 10px; 
+} 
+
+.nav-bar { 
+    position: sticky; 
+    top: 0; 
+    background: #333; 
+    color: white; 
+    padding: 20px; 
+}
+.nav-bar a { 
+    color: white; 
+    text-decoration: none; 
+    margin-right: 20px; 
+    font-weight: bold; 
+} 
+
+section { 
+    padding: 50px; 
+    height: 800px;
+    line-height: 2;
+} 
+
+section:nth-child(even) { 
+    background: #e3cdcd; 
+} 
+
+section:nth-child(odd) { 
+    background: #e0d9d9; 
+} 
+
+img {
+    width: 300px;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial
+scale=1.0"> 
+    <title>Fixed Position</title> 
+    <style> 
+        *{ 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+        } 
+ 
+        header, footer { 
+            background: lightcoral; 
+            color: white; 
+            text-align: center; 
+            padding: 10px 20px; 
+        } 
+ 
+        nav { 
+            position: fixed; 
+            top: 10%;
+            background: #333; 
+            color: white; 
+            padding: 10px 20px; 
+            width:100%
+        }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            margin-right: 20px; 
+            font-weight: bold; 
+        } 
+ 
+        section { 
+            padding: 10%; 
+            height: 800px;
+        } 
+ 
+        section:nth-child(even) { 
+            background: #dad1d1; 
+        } 
+ 
+        section:nth-child(odd) { 
+            background: #ddd; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <header> 
+        <h1>E-Shop</h1> 
+    </header> 
+    <main>
+    <nav> 
+        <a href="#home">Home</a>
+                    <a href="#products">Products</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#cart">Cart 🛒</a>
+    </nav>
+    <section id="home"> 
+        <h2>Welcome to Mobile Shop</h2>
+            <h4>Best Deals Ever</h4>
+    </section> 
+    <section id="products"> 
+        <h2>Products</h2>
+        <ul>
+            <li>Smart Phone</li>
+            <li>Mobile accessories</li>
+            <li>Laptop</li>
+        </ul>
+    </section> 
+    <section id="deals"> 
+        <h2>Best Deals</h2> 
+        <p>Samsung Galaxy A56 - 128GB</p>
+    </section> 
+    <section id="cart"> 
+        <h2>Cart</h2> 
+        <p>Add items to Cart</p> 
+    </section> 
+</main>
+<footer>
+    <p> &copy; 2025 All Rights Reserved </p>
+</footer>
+</body> 
+</html>

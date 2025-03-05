@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu</title>
+    <style>
+        *{ 
+           box-sizing: border-box;
+            margin: 0; 
+            padding: 0; 
+        } 
+        
+        .container {
+            position: relative;
+            margin: 20px;
+        }
+
+        .btn {
+            background-color: blue;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .list-items {
+            position: absolute;
+            background-color: white;
+            width: 70px;
+            border: 1px solid gray;
+            opacity: 0;
+        }
+
+        .list-items a {
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+            line-height: 2;
+        }
+
+        .list-items a:hover {
+            background-color: bisque;
+        }
+
+        .container:hover .list-items {
+            opacity: 1;
+        }
+        
+    </style>
+</head>
+<body>
+    <header><h1>Dropdown Menu</h1></header>
+    <main>
+    <div class="container">
+        <button class="btn">Menu</button>
+        <div class="list-items">
+            <a href="#">Item 1</a>
+            <a href="#">Item 2</a>
+            <a href="#">Item 3</a>
+            <a href="#">Item 4</a>
+        </div>
+    </div>
+</main>
+</body>
+</html>
