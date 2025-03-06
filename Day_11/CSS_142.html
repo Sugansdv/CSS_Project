@@ -3,39 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Full-Screen Overlay</title>
+    <title>Full Screen Overlay</title>
     <style>
-        * {
-            padding: 0;
+         * {
             margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
+
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: gray; 
+            width: 100%;
+            height: 100%;
+            background-color: rgba(233, 117, 117, 0.5);
         }
-        .container {
-            position: relative;
-            width: 400px;
-            height: 50vh;
-            background: blueviolet;
+
+        .overlay-content {
+            width:30%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
             text-align: center;
-            border: 2px solid black;
-            margin: 50px auto; 
+            margin: 250px auto;
         }
-        .text {
-            color: white;
-        }
+     
+        
     </style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="text">Welcome to this Page</div>
+    
+    <img src="./assets/nature.jpg" alt="image">
+
+    <div class="overlay">
+        <div class="overlay-content">
+            <h2>Overlay Content</h2>
+            <p>This is the content within the full-screen overlay</p>
+        </div>
     </div>
+
 </body>
 </html>
