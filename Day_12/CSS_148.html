@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fade Out Text</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #fade {
+            padding: 20px;
+            background: lightgrey;
+            transition: opacity 1s ease;
+        }
+
+        #fade:target {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#fade">Fade</a>
+    <div id="fade">This text fade out.</div>
+</body>
+
+</html>

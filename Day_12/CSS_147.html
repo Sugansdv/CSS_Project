@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Blur Effect on Hover</title>
+<style>
+     *{
+        padding:0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+.nav-bar {
+  background-color: lightblue;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 10px;
+  margin: 10px;
+  transition: filter 0.3s ease-in; 
+}
+
+nav a:hover {
+  filter: blur(5px);
+}
+</style>
+</head>
+<body>
+<div class="nav-bar">
+<nav>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Services</a>
+  <a href="#">Contact</a>
+</nav>
+</div>
+</body>
+</html>

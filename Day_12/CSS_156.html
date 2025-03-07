@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Shadow Effect on Cards</title>
+    <style>
+        .card {
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h3>Card</h3>
+        <p>Card with a 3D shadow effect.</p>
+    </div>
+</body>
+</html>

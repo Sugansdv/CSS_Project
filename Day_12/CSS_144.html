@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fading Text Effect</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .fade-text {
+      font-size: 2em;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-text:hover {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="fade-text">
+    <p>Text will fade on hover.</p>
+  </div>
+
+</body>
+
+</html>

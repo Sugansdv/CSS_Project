@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Grayscale Image Hover</title>
+<style>
+    *{
+        padding:0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+.grayscale {
+  transition: filter 0.5s ease-in-out;
+}
+
+.grayscale:hover {
+  filter: grayscale(100%); 
+}
+
+.grayscale img{
+    width:50%;
+
+}
+</style>
+</head>
+<body>
+<div class="grayscale">
+<img src="./assets/nature.jpg" alt="Image">
+</div>
+</body>
+</html>
