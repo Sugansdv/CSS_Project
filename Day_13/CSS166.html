@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effects</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+         .container {
+            text-align: center;
+            margin: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: blue;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+            border-radius: 20px;
+        }
+        .image {
+            width: 500px;
+            height: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .button:hover {
+                background-color: lightblue;
+                transform: translateY(-15px);
+            }
+            .image:hover {
+                transform: scale(1.1);
+                filter: brightness(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <img src="./assets/nature1.jpg" alt="Sample Image" class="image"><br>
+    <button class="button">Read more</button>
+</div>
+</body>
+</html>

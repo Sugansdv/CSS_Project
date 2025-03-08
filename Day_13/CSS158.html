@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Font Size</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease;
+        }
+
+        .container{
+          padding: 20px;
+          background-color: white;
+          border-radius: 8px;
+          text-align: center;
+        }
+
+
+      
+        @media (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+        }
+
+      
+        @media (min-width: 601px) and (max-width: 1024px) {
+            body {
+                background-color: lightgreen;
+            }
+            h1 {
+                font-size: 30px;
+            }
+            p {
+                font-size: 18px;
+            }
+        }
+
+        
+        @media (min-width: 1025px) {
+            body {
+                background-color: lightpink;
+            }
+            h1 {
+                font-size: 40px;
+            }
+            p {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Background Colors and Font size Changes</h1>
+        <p>Small Screen: Blue</p>
+        <p>Medium Screen: Green</p>
+        <p>Large Screen: pink</p>
+    </div>
+</body>
+</html>

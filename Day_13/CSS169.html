@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design with Nested Media Queries</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+body{
+    
+    background-color: lightcoral;
+}
+.container {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color: black;
+    padding: 20px;
+    margin:100px;
+}
+
+
+@media (min-width: 768px) and (orientation: landscape) {
+    body {
+        background-color: lightblue;
+        font-size: 18px;
+    }
+
+    h1 {
+        color: blue;
+    }
+
+ 
+    @media (min-width: 1920px) {
+        body {
+            background-color: lightgreen;
+            font-size: 20px;
+        }
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Media Query</h1>
+        <p>Media Query  helps in creating responsive websites that adapt to 
+            different devices (mobile, tablet, desktop). </p>
+</div>
+</body>
+</html>

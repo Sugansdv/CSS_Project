@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Background</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease;
+        }
+
+        .container{
+          padding: 20px;
+          background-color: white;
+          border-radius: 8px;
+        }
+
+
+      
+        @media (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+        }
+
+      
+        @media (min-width: 601px) and (max-width: 1024px) {
+            body {
+                background-color: lightgreen;
+            }
+        }
+
+        
+        @media (min-width: 1025px) {
+            body {
+                background-color: lightpink;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Background Colors Changes</h1>
+    </div>
+</body>
+</html>

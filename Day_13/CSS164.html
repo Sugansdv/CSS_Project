@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation Specific Styles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+        }
+
+        @media only screen and (orientation: portrait) {
+            body {
+                background-color: rgb(113, 240, 113);
+            }
+
+            .container {
+                text-shadow: 2px 2px 5px rgb(181, 214, 144);
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+        }
+
+        @media only screen and (orientation: landscape) {
+            body {
+                background-color: lightblue;
+            }
+
+            .container {
+                text-shadow: 2px 2px 5px rgb(134, 134, 231);
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
+            p {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Media Query</h1>
+        <p>Media Query helps in creating responsive websites that adapt to
+            different devices (mobile, tablet, desktop). </p>
+    </div>
+</body>
+
+</html>

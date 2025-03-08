@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Responsive Footer </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            background-color: lightcoral;
+            padding: 10px;
+            text-align: center;
+        }
+        footer{
+            position: fixed;
+            bottom: 0;
+            left:0;
+            width:100%;
+        }
+        .nav-bar ul{
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            background: gray;
+            padding: 10px;
+        }
+
+        .nav-bar nav ul li {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .nav-bar nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        footer p{
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .nav-bar ul{
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1> Responsive Footer </h1>
+    </header>
+    <footer>
+        <div class="nav-bar">
+            <nav>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p>&copy; 2025 My Website | All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>
