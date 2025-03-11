@@ -1,0 +1,376 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease-in-out;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: lightcyan;
+}
+
+/* header */
+header {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #1E3A8A;
+    box-shadow: 2px 4px 8px lightgray;
+    padding: 15px 15px;
+    border-radius: 10px;
+    display: flex;
+}
+
+header h2,
+h3 {
+    padding: 15px;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: rgb(206, 201, 201);
+}
+
+header a:hover {
+    background-color: orangered;
+    color: white;
+}
+
+
+/* Side-bar */
+.container_main {
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 300px;
+    height: 86vh;
+    padding-top: 20px;
+    box-shadow: 2px 4px 8px rgb(79, 71, 71);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightblue;
+}
+
+.prof-img {
+    width: 10%;
+    height: 20%;
+    position: absolute;
+    top: 1%;
+    z-index: 100;
+    left: 5%;
+    position: fixed;
+
+}
+
+.sidebar h2 {
+    margin-top: 30%;
+}
+
+.sidebar nav {
+    display: flex;
+}
+
+.sidebar a {
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sidebar a:hover {
+    background: #575757;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.social-icons i {
+    font-size: 25px;
+    box-shadow: 2px 4px 8px rgb(79, 71, 71);
+    padding: 10px 10px;
+    color: blue;
+    border-radius: 50%;
+    background-color: antiquewhite;
+}
+
+.contact-info {
+    box-shadow: 2px 4px 8px rgb(79, 71, 71);
+    padding: 30px 20px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(79, 71, 71, 0.2);
+    padding: 15px 30px;
+}
+
+.contact-info i {
+    color: orangered;
+
+}
+
+.contact-info .download-btn {
+    background: linear-gradient(to right, Orange, red);
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin: 10px;
+    align-items: center;
+    color: beige;
+}
+
+.contact-info .download-btn:hover {
+    transform: scale(1.1);
+}
+
+/* main_Home_Section */
+.main-content {
+
+    margin-top: 50px;
+    margin-left: 300px;
+    padding: 5px;
+}
+
+section:nth-child(even),
+section:nth-child(3) {
+    padding: 30px;
+    height: 100vh;
+}
+
+@keyframes animateBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+section:nth-child(1) {
+    background: linear-gradient(270deg, lightpink, lightgreen, lightblue);
+    background-size: 400% 400%;
+    animation: animateBackground 6s ease infinite;
+    height: 87vh;
+    padding: 30px;
+}
+/* .text {
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-400px); }
+    to { opacity: 1; transform: translateY(0); }
+} */
+
+.text {
+    margin: 200px auto;
+    text-align: center;
+
+    line-height: 2;
+}
+
+.text .btn {
+    background: linear-gradient(to right, orangered, red);
+    border-radius: 10px;
+    padding: 10px 15px;
+    align-items: center;
+    color: beige;
+    font-size: 14px;
+
+   
+
+}
+
+.text .btn:hover {
+    transform: translateY(-15%);
+}
+
+/* about_Section */
+#about h1,
+p {
+    line-height: 2;
+}
+
+.skills {
+    margin-top: 10px;
+    line-height: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.skills i {
+    color: orangered;
+}
+
+.skill:nth-child(1),
+.skill:nth-child(4) {
+    background-color: bisque;
+    border-radius: 10px;
+    margin: 5px 15px;
+    padding: 2px 5px;
+}
+
+.skill:nth-child(2),
+.skill:nth-child(3) {
+    background-color: rgb(180, 239, 219);
+    border-radius: 10px;
+    margin: 5px 15px;
+    padding: 2px 5px;
+}
+
+/* resume_Section */
+.resume_title {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.card1,
+.card2 {
+    width: 350px;
+    margin-top: 40px;
+    background: white;
+    padding: 15px 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(79, 71, 71, 0.7);
+}
+
+/* work_section */
+.works {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px;
+    color: gray;
+}
+
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    width: 25%;
+    height: 25vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 4px #0e0e0e;
+}
+
+.card img {
+    padding-top: 10px;
+    width: 80%;
+    height: 60%;
+}
+
+.card:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+    text-shadow: 2px 4px 8px lightskyblue;
+}
+
+/* Contact_Section */
+#contact {
+    padding: 30px;
+    height: 100vh
+}
+
+.contact-details {
+    display: flex;
+    gap: 20%;
+    margin: 20px 25px;
+
+}
+
+
+.contact-details i {
+    color: orangered;
+    box-shadow: 2px 4px 6px rgba(202, 195, 195, 0.5);
+    font-size: 30px;
+}
+
+
+.contact-form {
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 8px rgba(43, 39, 39, 0.8);
+    width: 60%;
+}
+
+label {
+
+    
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+input,
+textarea {
+
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    background: linear-gradient(to right, orangered, red);
+    margin-left: 40%;
+    border-radius: 10px;
+    padding: 15px 30px;
+    align-items: center;
+    color: beige;
+}
+
+.submit-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #1E3A8A;
+    color: beige;
+}

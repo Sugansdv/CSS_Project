@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Company</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background: #e6f0ff;
+        }
+
+     
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+       
+        .sidebar {
+            width: 20%;
+            background: #0b1b3f;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* Navigation */
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sidebar nav ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+        }
+
+        .sidebar nav ul li a:hover {
+            background: #1e3358;
+        }
+
+        /* Social Icons */
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Main Content */
+        .content {
+            width: 80%;
+            position: relative;
+            background: url('./assets/image.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Overlay */
+        .overlay {
+            background: rgba(189, 224, 231, 0.3); /* Dark overlay */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Text Section */
+        .text-section {
+            text-align: center;
+            color: white;
+            max-width: 50%;
+        }
+
+        .text-section h1 {
+            font-size: 40px;
+        }
+
+        .text-section p {
+            font-size: 16px;
+            margin: 15px 0;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #0b1b3f;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .overlay {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-400px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn:hover {
+            transform: translateY(-20%);
+            background-color: darkblue;
+            color: white;
+        }
+        .social-icons i{
+            padding: 10px;
+            border-radius: 50%;
+            background-color: rgb(96, 96, 234);
+        }
+        
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 25%;
+            }
+
+            .content {
+                width: 75%;
+            }
+
+            .text-section {
+                max-width: 60%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                text-align: center;
+                padding-bottom: 20px;
+            }
+
+            .sidebar nav ul {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                padding: 0;
+            }
+
+            .sidebar nav ul li {
+                margin: 10px;
+            }
+
+            .content {
+                width: 100%;
+                height: 60vh;
+                text-align: center;
+            }
+
+            .text-section {
+                max-width: 80%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-section h1 {
+                font-size: 28px;
+            }
+
+            .text-section p {
+                font-size: 14px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">BLO</span>
+                <span class="subtitle">Finance Company</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <nav>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Right Column - Main Content -->
+        <main class="content">
+            <div class="overlay">
+                <div class="text-section">
+                    <h1>Insuring Your Future <br> From Today</h1>
+                    <p>From banking and insurance to wealth management and securities distribution, we dedicated financial services the teams serve all major sectors.</p>
+                    <div class="buttons">
+                        <a href="#" class="btn btn-primary">Work With Us</a>
+                        <a href="#" class="btn btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

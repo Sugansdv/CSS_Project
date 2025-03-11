@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease-in-out;
+}
+
+header{
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    height: 10vh;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    margin:15px 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+.menu a.active {
+    color: #ffcc00;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+.menu li {
+    position: relative;
+}
+
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+main {
+    height: 100vh;
+    padding: 50px 20px;
+    background-image: url('./assets/image.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero_text {
+    line-height: 2;
+    margin:30px
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #403c3c;
+}
+
+.btn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+footer p{
+    color: white;
+}

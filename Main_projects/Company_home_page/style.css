@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease-in-out;
+}
+
+main{
+    display: flex;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    padding: 10px;
+}
+
+.sidebar nav ul li a:hover {
+    background: #1e3358;
+}
+
+.sidebar {
+    width: 20%;
+    background: rgb(1, 1, 79);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: 30px;
+}
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logo .logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+.title {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+
+.social-icons i {
+    color: blue;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px;
+    margin:20% 0;
+    border-radius: 50%;
+    background-color: lightblue;
+    margin-left: 10px;
+}
+
+.footer p{
+    margin-top:30%;
+}
+/* main-content */
+.content {
+    width: 80%;
+    position: relative;
+    background: url('./assets/image.png') no-repeat center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    background: rgba(73, 175, 203, 0.2); 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    text-align: center;
+    color: white;
+    max-width: 50%;
+}
+
+.text h1 {
+    font-size: 40px;
+}
+
+.text p {
+    font-size: 16px;
+    margin: 15px 0;
+    line-height: 1.5em;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.btn-1 {
+    background: white;
+    color: #0b1b3f;
+}
+
+.btn-2 {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+.overlay .text, .buttons{
+    animation: fadeIn 2s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-400px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn:hover {
+    transform: translateY(-20%);
+    background-color: darkblue;
+    color: white;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 25%;
+    }
+
+    .content {
+        width: 75%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .content {
+        width: 100%;
+        height: 70vh;
+    }
+   
+    
+    
+}
+
+@media (max-width: 480px) {
+    .text h1 {
+        font-size: 18px;
+    }
+
+    .text p {
+        font-size: 12px;
+    }
+
+    
+}
