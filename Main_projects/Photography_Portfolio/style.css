@@ -8,7 +8,7 @@
 }
 
 header{
-    background-color: #333;
+    background-color: #4e4c4c;
     color: white;
     padding: 10px 20px;
     height: 10vh;
@@ -67,16 +67,16 @@ main {
 
 h1 {
     font-size: 36px;
-    color: #333;
+    color: #454444;
 }
 
 p {
     font-size: 18px;
-    color: #403c3c;
+    color: #423d3d;
 }
 
 .btn {
-    background-color: #333;
+    background-color: #333333;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -86,13 +86,13 @@ p {
 }
 
 .btn:hover {
-    background-color: #555;
+    background-color: #544f4f;
 }
 
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #333;
+    background-color: #393737;
     position: fixed;
     width: 100%;
     bottom: 0;

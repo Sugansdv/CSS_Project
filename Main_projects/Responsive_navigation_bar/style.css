@@ -8,7 +8,7 @@
 }
 
 header{
-    background-color: #333;
+    background-color: #383636;
     color: white;
     padding: 10px 20px;
     height: 10vh;
@@ -47,7 +47,7 @@ header{
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #444;
+    background-color: #4b4a4a;
     list-style: none;
     width: 150px;
     z-index: 1;
