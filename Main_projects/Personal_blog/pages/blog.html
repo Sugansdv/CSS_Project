@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Blog</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h2>Suganya's Blog</h2>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <aside class="sidebar">
+            <h2>Categories</h2>
+            <ul>
+                <li><a href="#tech">Technology</a></li>
+                <li><a href="#life">Lifestyle</a></li>
+                <li><a href="#travel">Travel</a></li>
+                <li><a href="#food">Food</a></li>
+            </ul>
+        </aside>
+        <section class="blog-content" >
+            <article class="blog-item">
+                <img src="../assets/ai.webp" alt="AI">
+                <div id="tech">
+                    <h2>The Future of AI</h2>
+                    <p class="date">March 11, 2025</p>
+                    <p>Artificial Intelligence is revolutionizing industries...</p>
+                </div>
+            </article>
+            <article class="blog-item">
+                <img src="../assets/nature.webp" alt="Nature">
+                <div id="travel">
+                    <h2>Exploring the Beauty of Nature</h2>
+                    <p class="date">March 5, 2025</p>
+                    <p>Nature has a unique way of rejuvenating the mind...</p>
+                </div>
+            </article>
+            <article class="blog-item">
+                <img src="../assets/healthy-diet.jpg" alt="Healthy">
+                <div id="life">
+                    <h2>Healthy Eating: A Guide to Nutritious Living</h2>
+                    <p class="date">February 28, 2025</p>
+                    <p>Eating healthy is about feeling great and having energy...</p>
+                </div>
+            </article>
+            <article class="blog-item">
+                <img src="../assets/food.jpeg" alt="Food">
+                <div id="food">
+                    <h2>The Joy of Food: Exploring Flavors</h2>
+                    <p class="date">February 20, 2025</p>
+                    <p>Food is not just a necessity; it's an experience...</p>
+                </div>
+            </article>
+            <div class="comment-section">
+                <h3>Leave a Comment</h3>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Comment" required></textarea>
+                    <button type="submit">Post Comment</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
