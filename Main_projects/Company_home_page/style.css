@@ -124,7 +124,7 @@ main{
     border-radius: 15px;
     margin-right: 10px;
     background: black;
-    color: antiquewhite;
+    color: white;
 }
 .overlay .text, .buttons{
     animation: fadeIn 2s ease-in-out;
@@ -135,9 +135,7 @@ main{
 }
 
 .btn:hover {
-    transform: translateY(-20%);
-    box-shadow: 0 0 10px rgb(44, 140, 140), 0 0 20px rgb(44, 140, 140), 0 0 40px rgb(44, 140, 140);
-    transform: scale(1.1);
+    box-shadow: 0 0 10px rgb(70, 229, 229), 0 0 20px rgb(70, 229, 229), 0 0 40px rgb(70, 229, 229);
 }
 
 @media (max-width: 1024px) {
