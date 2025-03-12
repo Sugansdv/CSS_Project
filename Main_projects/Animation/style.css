@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to bottom, lightblue, rgb(207, 223, 228));
+    height: 100vh;
+}
+
+.animation-container {
+    position: relative;
+    height: 100vh;
+}
+
+.sun {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    border-radius: 50%;
+}
+
+.cloud{
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top:5%;
+    left:50%;
+    animation: move-clouds 10s infinite linear;
+}
+.cloud .circle{
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+.cloud .circle:nth-child(2){
+    width: 100px;
+    height: 100px;
+    top:50px;
+    left: -50px;
+}
+.cloud .circle:nth-child(3){
+    width: 100px;
+    height: 100px;
+    top:50px;
+    left: 100px;
+}
+.cloud .base{
+    width: 160px;
+    height: 30px;
+    background-color: white;
+    position:absolute;
+    top: 120px;
+}
+@keyframes move-clouds {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
+.tree .trunk {
+    width: 25px;
+    height: 140px;
+    position:absolute;
+    top:80%;
+    left:20%;
+    background: brown;
+}
+.tree .branch {
+    position:absolute;
+    top:65%;
+    left:17%;
+    width: 110px;
+    height: 140px;
+    background: green;
+    border-radius: 50%;
+}
+.ball {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius: 50%;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-150px); }
+}
+.cube {
+    position: absolute;
+    bottom: 100px;
+    right: 20%;
+    width: 100px;
+    height: 100px;
+    background: blue;
+    animation: rotate-cube 3s infinite linear;
+}
+@keyframes rotate-cube {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 768px) {
+.sun {
+top: 20px;
+right: 20px;
+width: 60px;
+height: 60px;
+}
+
+.cloud {
+top: 10%;
+left: 30%;
+}
+
+.cloud .circle {
+width: 90px;
+height: 90px;
+}
+
+.cloud .circle:nth-child(2) {
+width: 60px;
+height: 60px;
+top: 30px;
+left: -30px;
+}
+.cloud .circle:nth-child(3) {
+width: 60px;
+height: 60px;
+top: 30px;
+left: 60px;
+}
+.cloud .base {
+width: 90px;
+height: 20px;
+top: 70px;
+}
+
+.tree .trunk {
+width: 15px;
+height: 100px;
+left: 10%;
+}
+
+.tree .branch {
+width: 70px;
+height: 100px;
+left: 7%;
+}
+
+.ball {
+width: 60px;
+height: 60px;
+bottom: 30px;
+}
+
+.cube {
+width: 60px;
+height: 60px;
+bottom: 60px;
+}
+}
+@media screen and (max-width: 320px) {
+.tree .trunk {
+    top:80%;
+    left:15%;
+}
+.ball {
+width: 30px;
+height: 30px;
+}
+
+.cube {
+width: 30px;
+height: 30px;
+}
+}
