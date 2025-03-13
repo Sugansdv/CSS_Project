@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease-in-out;
+}
+
+header{
+    background-color: #383636;
+    color: white;
+    padding: 10px 20px;
+    height: 10vh;
+}
+nav{
+    
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+.menu {
+    list-style: none;
+    display: flex;
+    margin:15px 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+.menu a.active {
+    color: #ffcc00;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+.menu li {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #4b4a4a;
+    list-style: none;
+    width: 150px;
+    z-index: 1;
+}
+
+.dropdown-menu li a {
+    padding: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.hero_text {
+    background-image: linear-gradient(to bottom, rgba(224, 219, 205, 0.5), rgba(110, 105, 105, 0.5)), url('./assets/image.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    height: 80vh;
+}
+
+.hero_text h1, p {
+    padding: 10px;
+}
+
+.hero_text h1 {
+    font-size: 48px;
+}
+
+.hero_text p {
+    font-size: 24px;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    height: 10vh;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        padding-left: 20px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        display: flex;
+    }
+    .menu li {
+        text-align: left;
+        width: 100%;
+    }
+    .dropdown-menu {
+        display: none;
+        background-color: #555;
+        top: 50%;
+    left: 15%;
+    }
+}

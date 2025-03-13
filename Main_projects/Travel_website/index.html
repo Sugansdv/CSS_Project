@@ -5,40 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Website</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        header{
-    background-color: #4e4c4c;
-    color: white;
-    padding: 10px 20px;
-    height: 10vh;
-}
-
-
-
-.btn {
-    background-color: #333333;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 18px;
-}
-    </style>
-  
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">Crea;Think</div>
+            <div class="logo">TravelWorld</div>
 
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">&#9776;</label>
             <ul class="menu">
                 <li><a href="#home" class="active">Home</a></li>
-                <li><a href="./pages/gallery.html">Gallery</a></li>
-                <li><a href="#">Portfolio</a></li>
+                <li><a href="./pages/destination.html">Destinations</a></li>
+                <li class="dropdown">
+                    <a href="#tours">Tours</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Adventure Tours</a></li>
+                        <li><a href="#">Cultural Tours</a></li>
+                        <li><a href="#">Batch Holidays</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">Blog</a></li>
+                <li><a href="./pages/testimonial .html">Testimonials</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
@@ -46,14 +33,13 @@
     <main>
         <section id="home">
             <div class="hero_text">
-                <h1>Sugan's Photography</h1>
-                <p>I specialize in fashion</p>
-                <button class="btn">See my Portfolio</button>
+                <h1>Explore the World</h1>
+                <p>Your next adventure starts here.</p>
             </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 Crea;Think | All Rights Reserved</p>
+        <p>&copy; 2025 TravelWorld | All Rights Reserved</p>
     </footer>
 </body>
 </html>

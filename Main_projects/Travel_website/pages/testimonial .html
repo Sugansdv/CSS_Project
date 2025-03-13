@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    transition: all 0.3s ease-in-out;
+}
+
+header{
+    background-color: #383636;
+    color: white;
+    padding: 10px 20px;
+    height: 10vh;
+}
+nav{
+    
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+.menu {
+    list-style: none;
+    display: flex;
+    margin:15px 0;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+}
+
+.menu a.active {
+    color: #ffcc00;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+.menu li {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #4b4a4a;
+    list-style: none;
+    width: 150px;
+    z-index: 1;
+}
+
+.dropdown-menu li a {
+    padding: 10px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+#menu-toggle {
+    display: none;
+}
+.testimonials {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f8f8f8;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding:50px;
+}
+
+.testimonial-card {
+    background-color: #516b46;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+    margin: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+
+
+.testimonial-img img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid gray;
+}
+
+.testimonial-card p {
+    padding: 15px;
+}
+
+.testimonial-card h4 {
+    margin-top: 10px;
+}
+
+.quote {
+    color: white;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    position: static;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    color: white;
+}
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        padding-left: 20px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        display: flex;
+    }
+    .menu li {
+        text-align: left;
+        width: 100%;
+    }
+    .dropdown-menu {
+        display: none;
+        background-color: #555;
+        top: 50%;
+    left: 15%;
+    }
+    .testimonial-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">TravelWorld</div>
+
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">&#9776;</label>
+            <ul class="menu">
+                <li><a href="../index.html" class="active">Home</a></li>
+                <li><a href="./destination.html">Destinations</a></li>
+                <li class="dropdown">
+                    <a href="#tours">Tours</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Adventure Tours</a></li>
+                        <li><a href="#">Cultural Tours</a></li>
+                        <li><a href="#">Batch Holidays</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="./testimonial .html">Testimonials</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="testimonials">
+            <h2>Customer <br> TESTIMONIALS</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <img src="../assets/p1.jpg" alt="Customer 1">
+                    </div>
+                    <p>
+                        <span class="quote">“The best travel experience! Everything was well-organized, and I had an amazing time. 
+                        Highly recommended! ”</span>
+                    </p>
+                    <h4>- John Doe</h4>
+                </div>
+        
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <img src="../assets/p2.png" alt="Customer 2">
+                    </div>
+                    <p>
+                        <span class="quote">“Stunning destinations and a smooth trip. The team made sure we had a great experience. 
+                        Will book again! ”</span>
+                    </p>
+                    <h4>- Sarah Lee</h4>
+                </div>
+        
+                <div class="testimonial-card">
+                    <div class="testimonial-img">
+                        <img src="../assets/p3.webp" alt="Customer 3">
+                    </div>
+                    <p>
+                        <span class="quote">“Fantastic service and beautiful locations! Everything was taken care of, and we loved it. 
+                        Thank you! ”</span>
+                    </p>
+                    <h4>- David Smith</h4>
+                </div>
+            </div>
+        </section>
+        
+
+    </main>
+    <footer>
+        <p>&copy; 2025 TravelWorld | All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>
