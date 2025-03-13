@@ -57,9 +57,9 @@ main {
 .main-container p {
     font-size: 20px;
     max-width: 600px;
+    margin-bottom: 20px;
 }
 .main-container a {
-    margin-top: 20px;
     padding: 10px 20px;
     background: black;
     color: white;
