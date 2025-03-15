@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding:0 20px
+        }
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            padding: 20px;
+            background: #f4f4f4;
+            width:80%;
+            margin:50px auto;
+        }
+        .project {
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .project img {
+            width: 100%;
+        }
+       .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-shadow:2px 2px 2px black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .details p{
+            text-align: center;
+        }
+        .project:hover .details {
+            opacity: 1;
+        }
+        main h2{
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+        @media (max-width: 900px) {
+            .portfolio {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .portfolio {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <main >
+        <h2>PROJECTS</h2>
+        <div class="portfolio">
+            <div class="project">
+                <img src="./assets/content.jpeg" alt="Contentmanagement-system">
+                <div class="details">
+                    <h2>Content Management System</h2>
+                    <p>A dynamic CMS for managing website content efficiently.</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="./assets/dataanaly.jpeg" alt="Data-Analysis">
+                <div class="details">
+                    <h2>Data Analysis Dashboard</h2>
+                    <p>Interactive dashboard for data visualization and insights.</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="./assets/ecom.jpeg" alt="E-commerce">
+                <div class="details">
+                    <h2>E-commerce Website</h2>
+                    <p>Online shopping platform with secure payment integration.</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="./assets/edtech.webp" alt="Edtech">
+                <div class="details">
+                    <h2>EdTech Platform</h2>
+                    <p>Learning management system for online education.</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="./assets/jobappln.jpg" alt="Job-portal">
+                <div class="details">
+                    <h2>Job Application Portal</h2>
+                    <p>Job listing and application tracking system.</p>
+                </div>
+            </div>
+            <div class="project">
+                <img src="./assets/proj-man.png" alt="Project-Tool">
+                <div class="details">
+                    <h2>Project Management Tool</h2>
+                    <p>Collaborative tool for managing team projects.</p>
+                </div>
+            </div>
+        </div>
+            
+    </main>
+    <footer>
+        <p>&copy; 2025 My Portfolio. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
