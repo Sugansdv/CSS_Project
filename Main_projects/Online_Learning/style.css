@@ -162,6 +162,9 @@ header {
     height: 30px;
     padding: 10px;
 }
+.faq h2{
+    padding:10px;
+}
 
 footer {
     background-color: black;
@@ -251,5 +254,9 @@ footer {
 
     footer {
         font-size: 14px;
+    }
+    .faq-item {
+    width:90%;
+    margin-left: 15px;
     }
 }
