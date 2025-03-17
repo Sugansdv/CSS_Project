@@ -91,3 +91,67 @@ footer {
 footer p{
     color: white;
 }
+@media (max-width: 768px) {
+    main {
+        height: 100vh; /* Ensures the full image is visible */
+        background-size: contain; /* Ensures the full image is shown */
+        background-repeat: no-repeat; /* Prevents repeating */
+        background-position: center top; /* Adjusts positioning */
+    }
+
+    .hero_text {
+        text-align: center; /* Centers text on smaller screens */
+        padding: 20px;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #0f0d0d;
+        padding-left: 20px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    #menu-toggle:checked~.menu {
+        display: flex;
+    }
+
+    .menu li {
+        text-align: left;
+        width: 100%;
+    }
+
+    
+}
+
+
+@media (max-width: 481px) {
+   
+
+    main {
+        background-size: contain;
+        background-position: center top;
+        height: 100vh;
+    }
+    
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+    
+    .hero_text {
+        margin:0;
+    }
+    .btn {
+        padding:0;
+        font-size: 12px;
+    }
+}

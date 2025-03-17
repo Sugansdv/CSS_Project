@@ -184,5 +184,58 @@ header {
     text-align:center;
 }
 
+@media (max-width: 768px) {
+    header {
+        padding: 20px 40px;
+    }
+    .nav-links {
+        display: flex; 
+        flex-direction: column;
+    }
+    .icons {
+        font-size: 16px;
+    }
+    .banner-content {
+        top: 35%;
+        left: 5%;
+    }
+    .contact-container {
+        flex-direction: column; 
+        width: 90%;
+    }
+    #contact {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+    .banner {
+        height: 60vh;
+    }
+    .banner-content {
+        top: 30%;
+        left: 3%;
+    }
+    .shop-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .contact-container {
+        width: 100%;
+        padding: 15px;
+    }
+    .map iframe {
+        height: 150px;
+    }
+    .footer {
+        font-size: 14px;
+    }
+}
+
 
 

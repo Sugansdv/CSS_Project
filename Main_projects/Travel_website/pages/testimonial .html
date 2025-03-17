@@ -160,8 +160,13 @@ footer p {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #333;
+        background-color: #0f0d0d;
         padding-left: 20px;
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        width: 100%;
+        z-index: 100;
     }
 
     .menu-icon {
@@ -171,22 +176,79 @@ footer p {
     #menu-toggle:checked ~ .menu {
         display: flex;
     }
+
     .menu li {
         text-align: left;
         width: 100%;
     }
+
     .dropdown-menu {
         display: none;
         background-color: #555;
         top: 50%;
-    left: 15%;
+        left: 10%;
     }
+
     .testimonial-container{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 }
+
+@media (max-width: 481px) {
+    header {
+        padding: 5px 10px;
+    }
+
+    .logo {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .menu-icon {
+        font-size: 28px;
+        right: 15px;
+        top: 10px;
+    }
+
+    .menu {
+        padding-left: 10px;
+        font-size: 16px;
+    }
+
+    .menu li {
+        padding: 10px 0;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        left: 0;
+    }
+
+    .testimonial-container {
+        padding: 20px;
+    }
+
+    .testimonial-card {
+        width: 90%;
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .testimonial-img img {
+        width: 100px;
+        height: 100px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+}
+
+
+
     </style>
 </head>
 

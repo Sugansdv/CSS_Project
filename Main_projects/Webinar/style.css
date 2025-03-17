@@ -227,6 +227,94 @@ footer {
     .agenda,
     .facts {
         padding: 15px;
+        margin-left:10px;
+    }
+    li{
+        margin-left:10px;
+    }
+
+    .speaker {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .speaker-card {
+        width: 50%;
+        margin-bottom: 15px;
+    }
+
+}
+@media (max-width: 481px) {
+    header {
+        padding: 10px 20px;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    nav {
+        width: 100%;
+        right: 0;
+        background: rgba(0, 0, 0, 0.9);
+        text-align: center;
+        display: none;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    #menu-toggle:checked ~ nav {
+        display: flex;
+    }
+
+    nav a {
+        display: block;
+        padding: 10px;
+    }
+
+    .content {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .left-section, 
+    .right-section {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .countdown {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .countdown div {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .right-section input,
+    .right-section select {
+        width: 90%;
+        padding: 8px;
+    }
+
+    .register-btn {
+        width: 50%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .description,
+    .agenda,
+    .facts {
+        width:94%;
+        padding: 10px;
+        font-size: 14px;
+        line-height: 1.4;
     }
 
     .speaker {
@@ -236,7 +324,10 @@ footer {
 
     .speaker-card {
         width: 80%;
-        margin-bottom: 15px;
+        padding: 15px;
     }
 
+    footer {
+        padding: 10px;
+    }
 }

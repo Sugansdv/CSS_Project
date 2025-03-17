@@ -77,11 +77,15 @@ footer {
 .price {
     font-weight: bold;
 }
+
 ul {
     list-style: none;
     padding: 10px;
 }
-
+html,body{
+    width: 100%;
+    overflow-x: hidden;
+}
 
 .btn {
     background: #007bff;
@@ -97,10 +101,52 @@ ul {
     background: #011731;
 }
 @media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 0;
+    }
+
     .pricing {
         flex-direction: column;
+        align-items: center;
     }
+
     .pricing-plan {
         width: 90%;
+        max-width: 350px;
+        height: auto;
+        padding: 20px;
     }
+
+    .best-plan {
+        transform: scale(1);
+    }
+
+    .best-plan:hover {
+        transform: scale(1.1);
+    }
+}
+
+
+@media (max-width: 480px) {
+    .pricing-plan {
+        width: 80%;
+        height: auto;
+        padding: 20px;
+    }
+
+    
+
+    .best-plan:hover {
+        transform: scale(1.05);
+    }
+
+
+    
 }

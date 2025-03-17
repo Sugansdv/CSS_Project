@@ -104,7 +104,7 @@ main h1 {
     max-height: 50%;
 }
 
-@media (max-width: 641px) {
+@media (max-width: 768px) {
     .gallery {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -134,12 +134,7 @@ main h1 {
         width: 100%;
     }
 
-    .dropdown-menu {
-        display: none;
-        background-color: #555;
-        top: 50%;
-        left: 15%;
-    }
+    
 }
 
 

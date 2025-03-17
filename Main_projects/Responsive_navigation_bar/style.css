@@ -116,3 +116,67 @@ footer {
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        background-color: rgb(38, 42, 42);
+        text-align: center;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu a {
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: white;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+    }
+
+    #menu-toggle:checked ~ .menu {
+        display: flex;
+    }
+
+    .hero_text {
+        height: 60vh;
+        padding: 20px;
+    }
+
+    .hero_text h1 {
+        font-size: 32px;
+    }
+
+    .hero_text p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero_text h1 {
+        font-size: 24px;
+    }
+
+    .hero_text p {
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
