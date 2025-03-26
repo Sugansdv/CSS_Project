@@ -23,21 +23,13 @@ console.log("");
 
 console.log("JS17. Check if a user is eligible to vote using comparison operators. ");
 // let age = prompt("Enter your age:");
-let age= 30;
-console.log("Your age : " + age);
-if (age >= 18) {
-    console.log("You are eligible to vote.");
-} else {
-    console.log("You are not eligible to vote.");
-}
+let age = 30;
+console.log("Your age: " + age);
+console.log(age >= 18 ? "You are eligible to vote." : "You are not eligible to vote.");
 
-age= 15;
-console.log("Your age : " + age);
-if (age >= 18) {
-    console.log("You are eligible to vote.");
-} else {
-    console.log("You are not eligible to vote.");
-}
+age = 15;
+console.log("Your age: " + age);
+console.log(age >= 18 ? "You are eligible to vote." : "You are not eligible to vote.");
 console.log("");
 
 console.log("JS18. Write a program to compare two strings using == and ===. ");
@@ -51,12 +43,8 @@ console.log("JS19. Use && to check if a user has a valid email and password. ");
 let Uemail = "Sugandv@gmail.com";
 let Upassword = "sugan123";
 let isEmailValid = Uemail.includes("@") && Uemail.includes(".");
-let isPasswordValid = Upassword.length >= 6;     
-    if (isEmailValid && isPasswordValid) {
-        console.log("Valid user.");
-    } else {
-        console.log("Invalid email or password.");
-    }
+let isPasswordValid = Upassword.length >= 6;
+console.log(isEmailValid && isPasswordValid ? "Valid user." : "Invalid email or password.");
 console.log("");
 
 console.log("JS20. Write a program to update wallet balance using assignment operators. ");
@@ -72,7 +60,6 @@ let amountdebit = 800;
 walletBalance -= amountdebit;
 console.log("Amount Debited:", amountdebit);
 console.log("Updated Wallet Balance:", walletBalance);
-
 console.log("");
 
 console.log("JS21. Use a ternary operator to check if a product is available in stock. ");
@@ -80,6 +67,7 @@ let stockQuantity = 10;
 let isAvailable = stockQuantity > 0;
 let message = isAvailable ? "Product is available" : "Out of stock";
 console.log(message);
+
 stockQuantity = 0;
 isAvailable = stockQuantity > 0;
 message = isAvailable ? "Product is available" : "Out of stock";
@@ -90,15 +78,18 @@ console.log("");
 console.log("JS22. Create a simple greater than condition to compare two numbers. ");
 let num1 = 50;
 let num2 = 10;
-console.log("Number_1=", num1);
-console.log("Number_2=", num2);
 
-if (num1 === num2) {
-    console.log("Both numbers are equal");
-} else {
-    let result = num1 > num2 ? num1 + " is greater" : num2 + " is greater";
-    console.log(result);
-}
+console.log("Number_1 =", num1);
+console.log("Number_2 =", num2);
+
+let resultt = (num1 === num2) 
+    ? "Both numbers are equal" 
+    : (num1 > num2) 
+        ? num1 + " is greater" 
+        : num2 + " is greater";
+
+console.log(resultt);
+
 console.log("");
 
 
@@ -113,40 +104,35 @@ console.log("");
 
 console.log("JS24. Use || to allow login using email or phone number. ");
 let email = "sugandv@gmail.com";
-let phone = "";
-let password = "sugan123";
-
-if ((email || phone) && password) {
-    console.log("Login successful");
-} else {
-    console.log("Invalid credentials");
-}
+let phone = "";                   
+let password = "sugan123";    
+console.log((email || phone) && password ? "Login successful" : "Invalid credentials"); 
 console.log("");
 
 console.log("JS25. Implement a Buy 1 Get 1 Free condition using if and &&. ");
 let itemsBought = 1;
-let isEligibleForOffer = itemsBought >= 1;
-
-if (itemsBought > 0 && isEligibleForOffer) {
-    let freeItems = itemsBought;
-    console.log("You bought", itemsBought, "item and got", freeItems, "free!");
-} else {
-    console.log("No offer applied.");
-}console.log("");
+let isEligibleForOffer = itemsBought > 0;
+let msg = isEligibleForOffer 
+    ? `You bought ${itemsBought} item and got ${itemsBought} free!` 
+    : "No offer applied.";
+console.log(msg);
+console.log("");
 
 console.log("JS26. Check if a year is a leap year using the modulus operator.");
 let year = 2025;
-    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
-        console.log(year + " is a leap year.");
-    } else {
-        console.log(year + " is not a leap year.");
-    }
+let result = (year % 4 === 0 && year % 100 !== 0) 
+                || year % 400 === 0 
+                ? year + " is a leap year." 
+                : year + " is not a leap year.";
+console.log(result);
 
-    year = 2024;
-    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
-        console.log(year + " is a leap year.");
-    } else {
-        console.log(year + " is not a leap year.");
-    }
+year=2024;
+result = (year % 4 === 0 && year % 100 !== 0) 
+                || year % 400 === 0 
+                ? year + " is a leap year." 
+                : year + " is not a leap year.";
+console.log(result);
+
+
 
 
