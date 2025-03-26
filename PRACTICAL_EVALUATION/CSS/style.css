@@ -1,0 +1,220 @@
+/* Sticky Header */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    background: #444;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Multi-column Layout */
+.flex-layout {
+    display: flex;
+    gap: 10px;
+}
+.flex-layout div {
+    flex: 1;
+    padding: 20px;
+    background: #eee;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+.tooltiptext {
+    visibility: hidden;
+    background: black;
+    color: white;
+    padding: 5px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* 3D Hover Effect */
+.card {
+    background: #ddd;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.1);
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 5px solid #ccc;
+    border-top: 5px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Blog Layout */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+.grid-layout div {
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: red;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+/* Vertical Navigation */
+.vertical-menu {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+.vertical-menu a {
+    padding: 10px;
+    text-decoration: none;
+    background: #ddd;
+    color: black;
+}
+.vertical-menu a:hover {
+    background: #bbb;
+}
+
+/* Link Styling */
+.styled-link {
+    color: blue;
+    text-decoration: none;
+}
+.styled-link:hover { color: red; }
+.styled-link:active { color: green; }
+
+/* Border Styles */
+.border-box {
+    border: dashed 3px #333;
+    padding: 20px;
+}
+
+/* Shadows */
+.shadow-box {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/* Sticky Footer */
+.sticky-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Centered Div */
+.centered-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #eef;
+}
+
+/* Float Image with Text Wrap */
+.float-left {
+    float: left;
+    margin-right: 10px;
+}
+
+/* Sticky Element */
+.sticky-element {
+    position: sticky;
+    top: 20px;
+    background: yellow;
+    padding: 10px;
+}
+
+/* Modal Popup */
+.modal {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+.modal:hover {
+    display: block;
+}
+
+/* Button Hover Animation */
+.hover-button {
+    background: blue;
+    color: white;
+    padding: 10px;
+    transition: background 0.3s;
+}
+.hover-button:hover {
+    background: darkblue;
+}
+
+/* Keyframe Animation */
+.animated-text {
+    position: relative;
+    animation: slideIn 2s;
+}
+@keyframes slideIn {
+    from { left: -100px; opacity: 0; }
+    to { left: 0; opacity: 1; }
+}
