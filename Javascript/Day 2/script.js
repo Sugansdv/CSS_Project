@@ -11,9 +11,8 @@ function checkEvenOrOdd(number) {
     return number % 2 === 0 ? "Even" : "Odd";
 }
 let no1 = 10;
-let no2 = 7;
-console.log(no1, "is", checkEvenOrOdd(no1)); 
-console.log(no2, "is", checkEvenOrOdd(no2)); 
+console.log(no1, "is", checkEvenOrOdd(no1));
+console.log(7, "is", checkEvenOrOdd(7));
 console.log("");
 
 console.log("JS16. Write a program that increments a number from 1 to 10 using ++. ");
@@ -25,16 +24,20 @@ console.log("");
 console.log("JS17. Check if a user is eligible to vote using comparison operators. ");
 // let age = prompt("Enter your age:");
 let age= 30;
-function checkVotingEligibility(age) {
-    console.log("Your age : " + age);
-    
-    if (age >= 18) {
-        console.log("You are eligible to vote.");
-    } else {
-        console.log("You are not eligible to vote.");
-    }
+console.log("Your age : " + age);
+if (age >= 18) {
+    console.log("You are eligible to vote.");
+} else {
+    console.log("You are not eligible to vote.");
 }
-checkVotingEligibility(age) 
+
+age= 15;
+console.log("Your age : " + age);
+if (age >= 18) {
+    console.log("You are eligible to vote.");
+} else {
+    console.log("You are not eligible to vote.");
+}
 console.log("");
 
 console.log("JS18. Write a program to compare two strings using == and ===. ");
@@ -45,57 +48,44 @@ console.log("Using === :", str1 === str2);
 console.log("");
 
 console.log("JS19. Use && to check if a user has a valid email and password. ");
-let userEmail = "Sugandv@gmail.com";
-let userPassword = "sugan123";
-let usermail = "sugandv"
-let userpass = "sugan123"
-function isValidUser(email, password) {
-    let isEmailValid = email.includes("@") && email.includes(".");
-    let isPasswordValid = password.length >= 6;     
+let Uemail = "Sugandv@gmail.com";
+let Upassword = "sugan123";
+let isEmailValid = Uemail.includes("@") && Uemail.includes(".");
+let isPasswordValid = Upassword.length >= 6;     
     if (isEmailValid && isPasswordValid) {
         console.log("Valid user.");
     } else {
         console.log("Invalid email or password.");
     }
-}
-isValidUser(userEmail, userPassword);
-console.log("");
-isValidUser(usermail, userpass);
 console.log("");
 
 console.log("JS20. Write a program to update wallet balance using assignment operators. ");
 let walletBalance = 5000;
-console.log("Initial Balance:" + walletBalance);
+console.log("Initial Balance:", walletBalance);
 
-function updateWalletBalance(balance, amount, operation) {
-    if (operation === "add") {
-        balance += amount;
-        console.log("Amount Credited:", amount);
-    } else {
-        balance -= amount;
-        console.log("Amount Debited:", amount);
-    }
-    console.log("Updated Wallet Balance:", balance);
-}
-updateWalletBalance(walletBalance, 1500, "add");
-updateWalletBalance(walletBalance, 800, "subtract");
+let Addamount = 1500;
+walletBalance += Addamount;
+console.log("Amount Credited:", Addamount);
+console.log("Updated Wallet Balance:", walletBalance);
+
+let amountdebit = 800;
+walletBalance -= amountdebit;
+console.log("Amount Debited:", amountdebit);
+console.log("Updated Wallet Balance:", walletBalance);
 
 console.log("");
 
 console.log("JS21. Use a ternary operator to check if a product is available in stock. ");
-function checkStock(quantity) {
-    let isAvailable = quantity > 0;
-    let message = isAvailable ? "Product is available" : "Out of stock";
-    console.log(message);
-}
 let stockQuantity = 10;
-console.log("Stock_Quantity: " + stockQuantity);
-checkStock(stockQuantity);
-
+let isAvailable = stockQuantity > 0;
+let message = isAvailable ? "Product is available" : "Out of stock";
+console.log(message);
 stockQuantity = 0;
-console.log("Stock_Quantity: " + stockQuantity);
-checkStock(stockQuantity);
+isAvailable = stockQuantity > 0;
+message = isAvailable ? "Product is available" : "Out of stock";
+console.log(message);
 console.log("");
+
 
 console.log("JS22. Create a simple greater than condition to compare two numbers. ");
 let num1 = 50;
@@ -145,15 +135,18 @@ if (itemsBought > 0 && isEligibleForOffer) {
 }console.log("");
 
 console.log("JS26. Check if a year is a leap year using the modulus operator.");
-function isLeapYear(year) {
+let year = 2025;
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
         console.log(year + " is a leap year.");
     } else {
         console.log(year + " is not a leap year.");
     }
-}
 
-isLeapYear(2025);
-isLeapYear(2024);
+    year = 2024;
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+        console.log(year + " is a leap year.");
+    } else {
+        console.log(year + " is not a leap year.");
+    }
 
 
