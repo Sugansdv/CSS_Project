@@ -1,9 +1,14 @@
 console.log("JS14. Write a program that calculates the total price of 3 products. ");
 let product1 = 50.75;
 let product2 = 30.25;
-let product3 = 20.00;
+let product3 = 70.00;
 let totalPrice = product1 + product2 + product3;
-console.log("Total Price: $" + totalPrice.toFixed(2));
+console.table([
+    { Product: "Product 1", Price: "Rs. " + product1.toFixed(2) },
+    { Product: "Product 2", Price: "Rs. " + product2.toFixed(2) },
+    { Product: "Product 3", Price: "Rs. " + product3.toFixed(2) },
+    { Product: "Total", Price: "Rs. " + totalPrice.toFixed(2) }
+]);
 console.log("");
 
 console.log("JS15. Create a script that checks if a number is even or odd using the modulus operator. ");
@@ -49,17 +54,17 @@ console.log("");
 
 console.log("JS20. Write a program to update wallet balance using assignment operators. ");
 let walletBalance = 5000;
-console.log("Initial Balance:", walletBalance);
+console.log("Initial Balance:", "Rs." + walletBalance.toFixed(2));
 
 let Addamount = 1500;
 walletBalance += Addamount;
-console.log("Amount Credited:", Addamount);
-console.log("Updated Wallet Balance:", walletBalance);
+console.log("Amount Credited:", "Rs." + Addamount.toFixed(2));
+console.log("Updated Wallet Balance:", "Rs." + walletBalance.toFixed(2));
 
 let amountdebit = 800;
 walletBalance -= amountdebit;
-console.log("Amount Debited:", amountdebit);
-console.log("Updated Wallet Balance:", walletBalance);
+console.log("Amount Debited:", "Rs." + amountdebit.toFixed(2));
+console.log("Updated Wallet Balance:", "Rs." + walletBalance.toFixed(2));
 console.log("");
 
 console.log("JS21. Use a ternary operator to check if a product is available in stock. ");
@@ -97,9 +102,9 @@ console.log("JS23. Write a JavaScript program to apply discounts if a cart total
 let cartTotal = 120; 
 let discount = cartTotal > 50 ? cartTotal * 0.1 : 0;  
 let finalPrice = cartTotal - discount;  
-console.log("Cart Total: $" + cartTotal); 
-console.log("Discount Applied: $" + discount); 
-console.log("Final Price to Pay: $" + finalPrice); 
+console.log("Cart Total: Rs." + cartTotal.toFixed(2)); 
+console.log("Discount Applied: Rs." + discount.toFixed(2)); 
+console.log("Final Price: Rs." + finalPrice.toFixed(2)); 
 console.log("");
 
 console.log("JS24. Use || to allow login using email or phone number. ");
@@ -113,7 +118,7 @@ console.log("JS25. Implement a Buy 1 Get 1 Free condition using if and &&. ");
 let itemsBought = 1;
 let isEligibleForOffer = itemsBought > 0;
 let msg = isEligibleForOffer 
-    ? `You bought ${itemsBought} item and got ${itemsBought} free!` 
+    ? "You bought " + itemsBought + " item and got " + itemsBought + " free!" 
     : "No offer applied.";
 console.log(msg);
 console.log("");
