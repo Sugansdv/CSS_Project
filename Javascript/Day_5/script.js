@@ -129,7 +129,7 @@ console.log("");
 
 console.log("=======================================================");
 console.log("JS64. Write an arrow function that doubles each number in an array. ");
-let doublenumbers = arr => arr.map(num => num * 2);
+let doublenumbers = array => array.map(num => num * 2);
 console.log(doublenumbers([1, 2, 3, 4, 5]));
 
 console.log("");
