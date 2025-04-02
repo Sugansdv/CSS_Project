@@ -1,11 +1,11 @@
 let grocerylist = [];
 
-function addItem(item) {
+function add(item) {
     grocerylist.push(item);
     console.log(item + " added to the grocery list");
 }
 
-function viewItems() {
+function view() {
     if (grocerylist.length === 0) {
         console.log("The grocery list is empty");
     } else {
@@ -13,8 +13,8 @@ function viewItems() {
     }
 }
 
-function removeItem(item) {
-    const index = grocerylist.indexOf(item);
+function remove(item) {
+    let index = grocerylist.indexOf(item);
     if (index !== -1) {
         grocerylist.splice(index, 1);
         console.log(item + " removed from the grocery list");
@@ -23,17 +23,17 @@ function removeItem(item) {
     }
 }
 
-addItem("bag");
-addItem("Pen");
-addItem("Box");
-addItem("Water Bottle")
-addItem("Pencil")
+add("bag");
+add("Pen");
+add("Box");
+add("Water Bottle")
+add("Pencil")
 
 console.log("\n");
-viewItems()
+view()
 
 console.log("\n");
-removeItem("Pencil") 
+remove("Pencil") 
 
 console.log("\n");
-viewItems()
+view()

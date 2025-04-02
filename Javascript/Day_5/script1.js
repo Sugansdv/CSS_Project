@@ -1,4 +1,4 @@
-function calculategrade() {
+function grade() {
     while (true) {
         let name = prompt("Enter Student Name (or type 'exit' to stop):");
         if (name === "exit") break; 
@@ -38,4 +38,4 @@ function calculategrade() {
     }
 }
 
-calculategrade();
+grade();
