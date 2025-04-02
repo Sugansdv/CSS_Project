@@ -1,4 +1,4 @@
-console.log("=======================================================");
+console.log("==================================================");
 console.log("JS53. Create a function that prints Hello, World!.");
 function print() { 
     console.log("Hello, World!"); 
@@ -6,7 +6,7 @@ function print() {
 print()
 console.log("");
 
-console.log("=======================================================");
+console.log("=================================================================");
 console.log("JS54. Write a function that takes a number and returns its cube. ");
 function cube(number) { 
     return number * number * number;
@@ -16,7 +16,7 @@ console.log("Cube of 3 is " + cube(3));
 console.log("Cube of 4 is " + cube(4));
 console.log("");
 
-console.log("=======================================================");
+console.log("============================================================");
 console.log("JS55. Write a function to check if a number is even or odd. ");
 function isEvenOrOdd(num) { 
     console.log(num + " is a " + (num % 2 === 0 ? "Even" : "Odd") + " number"); 
@@ -25,7 +25,7 @@ function isEvenOrOdd(num) {
 isEvenOrOdd(5); 
 console.log("");
 
-console.log("=======================================================");
+console.log("==========================================================");
 console.log("JS56. Write a function to find the factorial of a number. ");
 function factorial(number) {
     let result = 1;
@@ -39,7 +39,7 @@ console.log("The factorial of 4 is " + factorial(4));
 console.log("The factorial of 5 is " + factorial(5));
 console.log("");
 
-console.log("=======================================================");
+console.log("==========================================================");
 console.log("JS57. Create a function to return the sum of two numbers. ");
 function sum(a, b) {
     return a + b;
@@ -49,7 +49,7 @@ console.log("sum of (3, 5)" + " is " + sum(3, 5));
 console.log("sum of (10, 20)" + " is" + sum(10, 20)); 
 console.log("");
 
-console.log("=======================================================");
+console.log("==================================================================");
 console.log("JS58. Write a function that returns the largest of three numbers. ");
 function findLargest(num1, num2, num3) {
     if (num1 >= num2 && num1 >= num3) {
@@ -64,7 +64,7 @@ function findLargest(num1, num2, num3) {
 console.log("From the numbers 10, 25, 15 : " + "\n \n " + findLargest(10, 25, 15) + " is a largest number");
 console.log("");
 
-console.log("=======================================================");
+console.log("================================================================");
 console.log("JS59. Write a function that checks if a string is a palindrome. ");
 function isPalindrome(str) {
     let reversedStr = str.split('').reverse().join('');
@@ -79,7 +79,7 @@ isPalindrome("madam");
 isPalindrome("hello"); 
 console.log("");
 
-console.log("=======================================================");
+console.log("==========================================================");
 console.log("JS60. Create a function to convert Celsius to Fahrenheit. ");
 function celsiusToFahrenheit(celsius) {
     let fahrenheit = (celsius * 9/5) + 32;
@@ -89,7 +89,7 @@ celsiusToFahrenheit(0);
 celsiusToFahrenheit(100);
 console.log("");
 
-console.log("=======================================================");
+console.log("=========================================================");
 console.log("JS61. Write a function to calculate the simple interest. ");
 function calculateSimpleInterest(principal, rate, time) {
     let interest = (principal * rate * time) / 100;
@@ -110,7 +110,7 @@ function reversearray(arr) {
 reversearray([1, 2, 3, 4, 5]);
 console.log("");
 
-console.log("=======================================================");
+console.log("=====================================================================");
 console.log("JS63. Write a function that counts the number of vowels in a string. ");
 function countvowels(str) {
     let count = 0;
@@ -127,7 +127,7 @@ countvowels("// Today was a good day //");
 countvowels("// Aeroplane //");
 console.log("");
 
-console.log("=======================================================");
+console.log("====================================================================");
 console.log("JS64. Write an arrow function that doubles each number in an array. ");
 let doublesno = array => array.map(num => num * 2);
 
@@ -137,7 +137,16 @@ console.log("Given Array:", givenarray.join(', '));
 console.log("Doubled Array:", doubled.join(', '));
 console.log("");
 
-console.log("=======================================================");
+console.log("===========================================================");
 console.log("JS65. Create a function that takes a callback and calls it.");
+function execute(callback) {
+    callback(); 
+}
 
+function square() {
+    let num = 5;
+    console.log("Square of " + num + " is " + (num * num));
+}
+
+execute(square); 
 
