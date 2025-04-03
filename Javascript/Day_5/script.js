@@ -139,14 +139,15 @@ console.log("");
 
 console.log("===========================================================");
 console.log("JS65. Create a function that takes a callback and calls it.");
-function execute(callback) {
-    callback(); 
+function execute(number, callback) {
+    callback(number); 
 }
 
-function square() {
-    let num = 5;
-    console.log("Square of " + num + " is " + (num * num));
+function square(number) {
+    console.log("Square of " + number + " is " + (number * number));
 }
 
-execute(square); 
+execute(5, square); 
+console.log("");
+
 
