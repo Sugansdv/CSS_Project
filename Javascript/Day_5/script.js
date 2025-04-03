@@ -150,4 +150,23 @@ function square(number) {
 execute(5, square); 
 console.log("");
 
+console.log("JS65. Create a function that takes a callback and calls it.");
+function prepareOrder(customername, orderno) {
+    console.log("Your order " + "(#" + orderno + ")" + " is ready " + customername + "!");
+}
+
+function placeOrder(name) {
+    const customername = name.toUpperCase();
+    console.log("Welcome " + customername);
+    
+    const orderno = Math.floor(Math.random() * 900) + 100; 
+    console.log("Your order number is: " + orderno);
+    
+    setTimeout(prepareOrder, 5000, customername, orderno);
+}
+
+
+placeOrder('Dharun');
+
+
 
