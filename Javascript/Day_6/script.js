@@ -47,3 +47,56 @@ students.forEach(function(student, index) {
     console.log(index + 1 + ". " + student);
 });
 console.log("");
+
+console.log("=================================================");
+console.log("JS72. Create an object for a book with properties (title, author, price). ");
+let book = {
+  title: "Ponniyin Selvan",
+  author: "Kalki Krishnamurthy",
+  price: 299
+};
+
+console.log("Title:", book.title);
+console.log("Author:", book.author);
+console.log("Price: ₹" + book.price);
+console.log("");
+
+console.log("=================================================");
+console.log("JS73. Use Object.keys() to get all book properties. ");
+let bookkeys = Object.keys(book);
+console.log("Book Properties:", bookkeys);
+console.log("");
+
+console.log("=================================================");
+console.log("JS74. Use Object.values() to get all book values. ");
+let bookvalues = Object.values(book);
+console.log("Book Values:", bookvalues);
+console.log("");
+
+console.log("=================================================");
+console.log("JS75. Add a new property genre to the book object.");
+book.genre = "Historical Fiction";
+console.log("Updated Book:", book);
+console.log("");
+
+console.log("=================================================");
+console.log("JS76. Use delete to remove price from the book. ");
+delete book.price;
+console.log(book);
+console.log("");
+
+console.log("=================================================");
+console.log("JS77. Merge a publisher object into the book object. ");
+let publisher = {
+  name: "Vanathi Publishers",
+  year: 2003
+};
+Object.assign(book, publisher);
+console.log(book);
+console.log("");
+
+console.log("=================================================");
+console.log("JS78. Convert the book object into an array of key-value pairs using Object.entries().");
+let bookEntries = Object.entries(book);
+console.log(bookEntries);
+console.log("");
