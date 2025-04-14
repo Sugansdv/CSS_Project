@@ -13,12 +13,12 @@ function Book(title, author, year) {
   function addBook(title, author, year) {
     const book = new Book(title, author, year);
     library.push(book);
-    console.log(`✅ Book Added: ${book.getInfo()}`);
+    console.log(`Book Added: ${book.getInfo()}`);
   }
   
   function displayBooks() {
     if (library.length === 0) {
-      console.log("📚 No books found in the library");
+      console.log("No books found in the library");
     } else {
       console.log("\n📘 Book List:");
       console.table(library.map(book => ({
@@ -36,7 +36,7 @@ function Book(title, author, year) {
   
     if (results.length === 0) {
       console.log("");
-      console.log(`❌ "Book:${titleQuery}" not found.`);
+      console.log(`"Book:${titleQuery}" not found.`);
     } else {
         console.log("");        
       console.log(`🔍 Search Results for "${titleQuery}:"`);
