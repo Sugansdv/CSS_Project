@@ -1,3 +1,3 @@
-let str = "                Hello, I am Suganya";
+let str = " Trim me ";
 let removeSpace = str.trim();
 console.log(removeSpace); 
