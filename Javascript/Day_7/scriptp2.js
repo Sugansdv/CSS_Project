@@ -60,4 +60,3 @@ function Book(title, author, year) {
   searchBooks("Life");
   searchBooks("Journey");
   searchBooks("Wings"); 
-  
