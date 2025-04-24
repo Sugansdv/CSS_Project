@@ -4,45 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task_144</title>
+  <style>
+    .question { margin-bottom: 20px; }
+    .options label { display: block; margin: 5px 0; }
+    .submit-btn { margin-top: 20px; }
+  </style>
 </head>
 <body>
 
-<div class="quiz-container">
-  <h2>Quiz</h2>
-  <form id="quizForm">
-    <div>
-      <label for="question1">1. What is the capital of France?</label><br>
-      <input type="radio" name="question1" value="Paris"> Paris<br>
-      <input type="radio" name="question1" value="London"> London<br>
-      <input type="radio" name="question1" value="Berlin"> Berlin<br>
-    </div>
-    <div>
-      <label for="question2">2. What is 2 + 2?</label><br>
-      <input type="radio" name="question2" value="3"> 3<br>
-      <input type="radio" name="question2" value="4"> 4<br>
-      <input type="radio" name="question2" value="5"> 5<br>
-    </div>
-    <button type="button" onclick="submitQuiz()">Submit</button>
-  </form>
-</div>
+  <h2>Simple Quiz</h2>
+  <form id="quiz-form"></form>
+  <button class="submit-btn" onclick="submitQuiz()">Submit</button>
 
-<script>
-function loadQuizAnswers() {
-  const storedAnswers = JSON.parse(sessionStorage.getItem("quizAnswers"));
-
-  if (storedAnswers) {
-    for (let question in storedAnswers) {
-      const answer = storedAnswers[question];
-      const radioBtn = document.querySelector(`input[name="${question}"][value="${answer}"]`);
-      if (radioBtn) {
-        radioBtn.checked = true;
-      }
-    }
+  <script>
+const quizData = [
+  {
+    id: 1,
+    question: "What is the capital of Tamilnadu?",
+    options: ["Madurai", "Coimbatore", "Trichy", "Chennai"],
+    answer: "Chennai"
+  },
+  {
+    id: 2,
+    question: "Which is 2 + 2?",
+    options: ["3", "4", "6", "8"],
+    answer: "4"
   }
+];
+
+function loadQuiz() {
+  const form = document.getElementById("quiz-form");
+  form.innerHTML = "";
+
+  quizData.forEach((q, index) => {
+    const storedAnswer = sessionStorage.getItem(`question_${q.id}`);
+
+    const questionDiv = document.createElement("div");
+    questionDiv.className = "question";
+    questionDiv.innerHTML = `<strong>Q${index + 1}: ${q.question}</strong>`;
+
+    const optionsDiv = document.createElement("div");
+    optionsDiv.className = "options";
+
+    q.options.forEach((option) => {
+      const isChecked = storedAnswer === option ? "checked" : "";
+      optionsDiv.innerHTML += `
+        <label>
+          <input type="radio" name="q${q.id}" value="${option}" ${isChecked} onchange="saveAnswer(${q.id}, '${option}')">
+          ${option}
+        </label>
+      `;
+    });
+
+    questionDiv.appendChild(optionsDiv);
+    form.appendChild(questionDiv);
+  });
 }
 
+function saveAnswer(questionId, answer) {
+  sessionStorage.setItem(`question_${questionId}`, answer);
+}
 
-</script>
+function submitQuiz() {
+  let score = 0;
 
+  quizData.forEach(q => {
+    const selected = sessionStorage.getItem(`question_${q.id}`);
+    if (selected === q.answer) {
+      score++;
+    }
+  });
+
+  alert(`You scored ${score} out of ${quizData.length}`);
+}
+
+loadQuiz();
+
+  </script>
 </body>
 </html>
