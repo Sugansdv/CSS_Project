@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_136</title>
+</head>
+<body>
+
+<h2>Temporary Form Data</h2>
+
+<form>
+  <label>Name: <input type="text" id="nameInput"></label><br><br>
+  <label>Email: <input type="email" id="emailInput"></label>
+</form>
+
+<script>
+document.getElementById("nameInput").value = sessionStorage.getItem("name") || "";
+document.getElementById("emailInput").value = sessionStorage.getItem("email") || "";
+
+document.getElementById("nameInput").addEventListener("input", function() {
+  sessionStorage.setItem("name", this.value);
+});
+
+document.getElementById("emailInput").addEventListener("input", function() {
+  sessionStorage.setItem("email", this.value);
+});
+</script>
+
+</body>
+</html>

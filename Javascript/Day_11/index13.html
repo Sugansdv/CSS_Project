@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_144</title>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h2>Quiz</h2>
+  <form id="quizForm">
+    <div>
+      <label for="question1">1. What is the capital of France?</label><br>
+      <input type="radio" name="question1" value="Paris"> Paris<br>
+      <input type="radio" name="question1" value="London"> London<br>
+      <input type="radio" name="question1" value="Berlin"> Berlin<br>
+    </div>
+    <div>
+      <label for="question2">2. What is 2 + 2?</label><br>
+      <input type="radio" name="question2" value="3"> 3<br>
+      <input type="radio" name="question2" value="4"> 4<br>
+      <input type="radio" name="question2" value="5"> 5<br>
+    </div>
+    <button type="button" onclick="submitQuiz()">Submit</button>
+  </form>
+</div>
+
+<script>
+function loadQuizAnswers() {
+  const storedAnswers = JSON.parse(sessionStorage.getItem("quizAnswers"));
+
+  if (storedAnswers) {
+    for (let question in storedAnswers) {
+      const answer = storedAnswers[question];
+      const radioBtn = document.querySelector(`input[name="${question}"][value="${answer}"]`);
+      if (radioBtn) {
+        radioBtn.checked = true;
+      }
+    }
+  }
+}
+
+
+</script>
+
+</body>
+</html>

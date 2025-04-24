@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task_148</title>
+  <style>
+    .student  {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: rgb(247, 244, 244);
+      width: 30%;
+    }
+    .student p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Students with Grade A</h1>
+
+  <div id="student-list"></div>
+
+  <script>
+    let students = [
+      { name: "John", age: 20, grade: "A" },
+      { name: "Emma", age: 22, grade: "B" },
+      { name: "David", age: 21, grade: "A" },
+      { name: "Sophia", age: 23, grade: "C" },
+      { name: "Michael", age: 24, grade: "A" }
+    ];
+    let gradeAStudents = students.filter(student => student.grade === "A");
+
+    let studentListDiv = document.getElementById("student-list");
+
+    gradeAStudents.forEach(student => {
+      let studentDiv = document.createElement("div");
+      studentDiv.classList.add("student");
+
+      studentDiv.innerHTML = `
+        <p><strong>Name:</strong> ${student.name}</p>
+        <p><strong>Age:</strong> ${student.age}</p>
+        <p><strong>Grade:</strong> ${student.grade}</p>
+      `;
+
+      studentListDiv.appendChild(studentDiv);
+    });
+  </script>
+
+</body>
+</html>

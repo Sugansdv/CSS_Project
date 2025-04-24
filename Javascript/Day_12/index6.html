@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task_150</title>
+  <style>
+    .name-list{
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: rgb(247, 244, 244);
+      width: 30%;
+    }
+    .name-list p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Array of Names</h1>
+
+  <div id="name-list"></div>
+
+  <script>
+    let employees = [
+      { name: "Sugan", age: 30, position: "Software Engineer" },
+      { name: "Vishwa", age: 25, position: "Data Analyst" },
+      { name: "Dharun", age: 35, position: "Project Manager" },
+      { name: "Krish", age: 28, position: "UI/UX Designer" }
+    ];
+    let employeeNames = employees.map(employee => employee.name);
+
+    let nameListDiv = document.getElementById("name-list");
+
+    employeeNames.forEach(name => {
+      let nameDiv = document.createElement("div");
+      nameDiv.classList.add("name-list");
+
+      nameDiv.innerHTML = `<p>${name}</p>`;
+      nameListDiv.appendChild(nameDiv);
+    });
+  </script>
+
+</body>
+</html>

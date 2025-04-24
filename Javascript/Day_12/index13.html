@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task_157</title>
+  <style>
+    .product{
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: rgb(247, 244, 244);
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Highest Priced Product</h1>
+  
+  <div id="product-details"></div>
+  
+  <button onclick="displayHighestPricedProduct()">Find Highest Priced Product</button>
+
+  <script>
+    let products = [
+      { name: "Laptop", price: 75000, category: "Electronics" },
+      { name: "Headphones", price: 2500, category: "Accessories" },
+      { name: "Smartphone", price: 45000, category: "Electronics" },
+      { name: "Shoes", price: 3000, category: "Fashion" }
+    ];
+
+    function displayHighestPricedProduct() {
+      let highestPricedProduct = products.reduce((max, product) => {
+        return product.price > max.price ? product : max;
+      });
+
+      let productDetailsDiv = document.getElementById("product-details");
+      productDetailsDiv.innerHTML = `
+        <div class="product">
+          <p><strong>Name:</strong> ${highestPricedProduct.name}</p>
+          <p><strong>Price:</strong> ₹${highestPricedProduct.price}</p>
+          <p><strong>Category:</strong> ${highestPricedProduct.category}</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

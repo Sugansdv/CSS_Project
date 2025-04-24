@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_141</title>
+</head>
+<body>
+
+  <h2>Retrieve and Convert JSON String Back to Object</h2>
+  
+  <button onclick="retrieveObject()">Retrieve Object</button>
+  <p id="retrievedObject"></p>
+  
+  <script>
+  function retrieveObject() {
+    const jsonString = '{"name":"John","age":30,"city":"New York"}';
+    const userObject = JSON.parse(jsonString);
+    document.getElementById("retrievedObject").innerText = 
+      `Retrieved Object: Name: ${userObject.name}, Age: ${userObject.age}, City: ${userObject.city}`;
+  }
+  
+  </script>
+  
+  </body>
+  </html>

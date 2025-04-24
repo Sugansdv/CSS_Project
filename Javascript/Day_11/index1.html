@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_132</title>
+</head>
+<body>
+    <h2>Store and Retrieve Username Using LocalStorage</h2>
+    
+    <input type="text" id="username" placeholder="Enter your username">
+    
+    <button onclick="saveUsername()">Save Username</button>
+
+    <p id="savedUsername"></p>
+
+    <script>
+        function saveUsername() {
+            const username = document.getElementById("username").value;
+            localStorage.setItem("username", username);
+            displayUsername();
+        }
+
+        function displayUsername() {
+            const savedUsername = localStorage.getItem("username");
+            if (savedUsername) {
+                document.getElementById("savedUsername").innerText = `Saved Username: ${savedUsername}`;
+            } else {
+                document.getElementById("savedUsername").innerText = "No username saved.";
+            }
+        }
+
+        displayUsername();
+    </script>
+</body>
+</html>

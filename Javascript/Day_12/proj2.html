@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Book Management System</title>
+  <style>
+    .book{
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: rgb(247, 244, 244);
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Library Book Management System</h1>
+
+  <div>
+    <h3>Search Books</h3>
+    <label for="search-query">Enter Book Title, Author, or Genre: </label>
+    <input type="text" id="search-query">
+    <button onclick="searchBooks()">Search</button>
+  </div>
+
+  <div>
+    <h3>Track Borrowed Books</h3>
+    <label for="borrow-id">Enter Book ID to Borrow: </label>
+    <input type="text" id="borrow-id">
+    <label for="borrower">Enter Borrower's Name: </label>
+    <input type="text" id="borrower">
+    <button onclick="borrowBook()">Borrow Book</button>
+    
+    <br><br>
+    <label for="return-id">Enter Book ID to Return: </label>
+    <input type="text" id="return-id">
+    <button onclick="returnBook()">Return Book</button>
+  </div>
+
+  <div>
+    <h3>Available Books</h3>
+    <button onclick="listAvailableBooks()">List Available Books</button>
+    <div id="book-list"></div>
+  </div>
+
+  <script>
+    let books = [
+      { id: 1, title: "JavaScript", author: "Douglas Crockford", genre: "Programming", available: true, borrower: null },
+      { id: 2, title: "CSS: The Definitive Guide", author: " Eric A. Meyer", genre: "Programming", available: true, borrower: null },
+      { id: 3, title: "To Kill a Mockingbird", author: "Harper Lee", genre: "Fiction", available: true, borrower: null },
+      { id: 4, title: "Python Crash Course", author: "Eric Matthes", genre: "Programming", available: false, borrower: "sugan" }
+    ];
+
+    function displayBooks(bookArray) {
+      let bookListDiv = document.getElementById("book-list");
+      bookListDiv.innerHTML = ''; 
+
+      bookArray.forEach(book => {
+        let bookDiv = document.createElement("div");
+        bookDiv.classList.add("book");
+        bookDiv.innerHTML = `
+          <p><strong>ID:</strong> ${book.id}</p>
+          <p><strong>Title:</strong> ${book.title}</p>
+          <p><strong>Author:</strong> ${book.author}</p>
+          <p><strong>Genre:</strong> ${book.genre}</p>
+          <p><strong>Status:</strong> ${book.available ? "Available" : "Borrowed by " + book.borrower}</p>
+        `;
+        bookListDiv.appendChild(bookDiv);
+      });
+    }
+    function searchBooks() {
+      let query = document.getElementById("search-query").value.toLowerCase();
+      let searchResults = books.filter(book => 
+        book.title.toLowerCase().includes(query) ||
+        book.author.toLowerCase().includes(query) ||
+        book.genre.toLowerCase().includes(query)
+      );
+      
+      if (searchResults.length > 0) {
+        displayBooks(searchResults);
+      } else {
+        alert("No books found for your search query!");
+      }
+    }
+
+    function borrowBook() {
+      let bookId = document.getElementById("borrow-id").value;
+      let borrower = document.getElementById("borrower").value;
+
+      let book = books.find(b => b.id == bookId);
+
+      if (book && book.available) {
+        book.available = false;
+        book.borrower = borrower;
+        alert(`Book borrowed successfully: ${book.title}`);
+      } else if (book) {
+        alert("This book is already borrowed!");
+      } else {
+        alert("Book not found!");
+      }
+
+      displayBooks(books); 
+    }
+
+    function returnBook() {
+      let bookId = document.getElementById("return-id").value;
+
+      let book = books.find(b => b.id == bookId);
+
+      if (book && !book.available) {
+        book.available = true;
+        book.borrower = null;
+        alert(`Book returned successfully: ${book.title}`);
+      } else if (book) {
+        alert("This book is not borrowed yet!");
+      } else {
+        alert("Book not found!");
+      }
+
+      displayBooks(books); 
+    }
+
+    function listAvailableBooks() {
+      let availableBooks = books.filter(book => book.available);
+      if (availableBooks.length > 0) {
+        displayBooks(availableBooks);
+      } else {
+        alert("No books are available for borrowing at the moment!");
+      }
+    }
+
+    displayBooks(books);
+  </script>
+
+</body>
+</html>

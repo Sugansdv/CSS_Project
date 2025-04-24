@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_138</title>
+</head>
+<body>
+
+  <h2>Click Counter</h2>
+  <p>Clicked the button <span id="count">0</span> times.</p>
+  <button onclick="incrementCounter()">Click Me</button>
+  <br><br>
+  <button onclick="resetCounter()">Reset</button>
+
+  <script>
+    let count = localStorage.getItem('clickCount') || 0;
+    document.getElementById('count').textContent = count;
+
+    function incrementCounter() {
+      count++;
+      localStorage.setItem('clickCount', count);
+      document.getElementById('count').textContent = count;
+    }
+
+    function resetCounter() {
+      count = 0;
+      localStorage.setItem('clickCount', count);
+      document.getElementById('count').textContent = count;
+    }
+  </script>
+
+</body>
+</html>

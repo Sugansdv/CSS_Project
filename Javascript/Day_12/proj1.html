@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management System</title>
+  <style>
+    .product{
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: rgb(247, 244, 244);
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Inventory Management System</h1>
+
+  <div>
+    <h3>Check Stock Availability</h3>
+    <label for="search-id">Enter Product ID or Name: </label>
+    <input type="text" id="search-id">
+    <button onclick="checkStock()">Check Stock</button>
+  </div>
+
+  <div>
+    <h3>Update Inventory</h3>
+    <label for="update-id">Enter Product ID to Update: </label>
+    <input type="text" id="update-id">
+    <label for="quantity">Enter Quantity (to add / to remove): </label>
+    <input type="number" id="quantity">
+    <button onclick="updateInventory()">Update Stock</button>
+  </div>
+
+  <div>
+    <h3>Total Inventory Value</h3>
+    <button onclick="calculateTotalInventoryValue()">Calculate Total Value</button>
+    <p id="total-value"></p>
+  </div>
+
+  <div id="product-list"></div>
+
+  <script>
+    let inventory = [
+      { id: 1, name: "Laptop", category: "Electronics", quantity: 50, price: 75000 },
+      { id: 2, name: "Headphones", category: "Accessories", quantity: 150, price: 2500 },
+      { id: 3, name: "Smartphone", category: "Electronics", quantity: 30, price: 45000 },
+      { id: 4, name: "Shoes", category: "Fashion", quantity: 100, price: 3000 }
+    ];
+
+    function displayInventory() {
+      let productListDiv = document.getElementById("product-list");
+      productListDiv.innerHTML = '';
+
+      inventory.forEach(product => {
+        let productDiv = document.createElement("div");
+        productDiv.classList.add("product");
+        productDiv.innerHTML = `
+          <p><strong>ID:</strong> ${product.id}</p>
+          <p><strong>Name:</strong> ${product.name}</p>
+          <p><strong>Category:</strong> ${product.category}</p>
+          <p><strong>Quantity:</strong> ${product.quantity}</p>
+          <p><strong>Price:</strong> ₹${product.price}</p>
+        `;
+        productListDiv.appendChild(productDiv);
+      });
+    }
+    function checkStock() {
+      let searchValue = document.getElementById("search-id").value.toLowerCase();
+      let product = inventory.find(item => item.id == searchValue || item.name.toLowerCase() === searchValue);
+      
+      if (product) {
+        alert(`Product Found: ${product.name} - Stock: ${product.quantity}`);
+      } else {
+        alert("Product not found!");
+      }
+    }
+    function updateInventory() {
+      let productId = document.getElementById("update-id").value;
+      let quantity = parseInt(document.getElementById("quantity").value);
+
+      let product = inventory.find(item => item.id == productId);
+
+      if (product) {
+        product.quantity += quantity;
+        alert(`Updated ${product.name} - New Quantity: ${product.quantity}`);
+      } else {
+        alert("Product ID not found!");
+      }
+
+      displayInventory(); 
+    }
+
+    function calculateTotalInventoryValue() {
+      let totalValue = inventory.reduce((total, product) => total + (product.quantity * product.price), 0);
+      document.getElementById("total-value").innerText = `Total Inventory Value: ₹${totalValue}`;
+    }
+
+    displayInventory();
+  </script>
+
+</body>
+</html>

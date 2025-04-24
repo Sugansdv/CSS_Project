@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task_151</title>
+  <style>
+   .employee {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: rgb(247, 244, 244);
+      width: 30%;
+    }
+    .employee p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modify an object inside an array and update its value. </h1>
+
+  <div id="employee-list"></div>
+
+  <script>
+    let employees = [
+      { id: 1, name: "Sugan", age: 30, position: "Software Engineer" },
+      { id: 2, name: "Vishwa", age: 25, position: "Data Analyst" },
+      { id: 3, name: "Dharun", age: 35, position: "Project Manager" }
+    ];
+
+    let employeeToModify = employees.find(employee => employee.id === 2);
+    if (employeeToModify) {
+      employeeToModify.position = "Senior Data Analyst";
+    }
+
+    let employeeListDiv = document.getElementById("employee-list");
+
+    employees.forEach(employee => {
+      let employeeDiv = document.createElement("div");
+      employeeDiv.classList.add("employee");
+
+      employeeDiv.innerHTML = `
+        <p><strong>Name:</strong> ${employee.name}</p>
+        <p><strong>Age:</strong> ${employee.age}</p>
+        <p><strong>Position:</strong> ${employee.position}</p>
+      `;
+      employeeListDiv.appendChild(employeeDiv);
+    });
+  </script>
+
+</body>
+</html>

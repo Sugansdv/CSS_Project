@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>task_153</title>
+  <style>
+    .employee {
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid black;
+      background-color: rgb(247, 244, 244);
+      width: 30%;
+    }
+    .employee p {
+      margin: 5px 0;
+    }
+    input {
+      margin: 10px;
+      padding: 10px;
+      width: 450px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Search Employees</h1>
+
+  <input type="text" id="search" placeholder="Search by name..." oninput="searchEmployee()">
+  
+  <div id="employee-list"></div>
+
+  <script>
+    let employees = [
+      { id: 1, name: "Sugan", age: 30, position: "Software Engineer" },
+      { id: 2, name: "Dharun", age: 25, position: "Data Analyst" },
+      { id: 3, name: "Vishwa", age: 35, position: "Project Manager" },
+      { id: 4, name: "Krish", age: 28, position: "UI/UX Designer" }
+    ];
+
+    function displayEmployees(filteredEmployees) {
+      let employeeListDiv = document.getElementById("employee-list");
+      employeeListDiv.innerHTML = ''; 
+
+      if (filteredEmployees.length === 0) {
+        employeeListDiv.innerHTML = "<p>No employees found.</p>";
+      } else {
+        filteredEmployees.forEach(employee => {
+          let employeeDiv = document.createElement("div");
+          employeeDiv.classList.add("employee");
+          
+          employeeDiv.innerHTML = `
+            <p><strong>Name:</strong> ${employee.name}</p>
+            <p><strong>Age:</strong> ${employee.age}</p>
+            <p><strong>Position:</strong> ${employee.position}</p>
+          `;
+          employeeListDiv.appendChild(employeeDiv);
+        });
+      }
+    }
+
+    function searchEmployee() {
+      let searchValue = document.getElementById("search").value.toLowerCase();
+      let filteredEmployees = employees.filter(employee => 
+        employee.name.toLowerCase().includes(searchValue)
+      );
+
+      displayEmployees(filteredEmployees);
+    }
+    displayEmployees(employees);
+  </script>
+
+</body>
+</html>

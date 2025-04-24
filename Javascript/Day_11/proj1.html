@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Stopwatch</title>
+  <style>
+    body{
+        text-align: center;
+    }
+   #startStopBtn, #resetBtn{
+        font-size: 30px;
+    }
+    #time{
+        font-size: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Stopwatch</h2>
+  <div id="time">00:00</div><br><br>
+  
+  <button id="startStopBtn">Start</button>
+  <button id="resetBtn">Reset</button>
+
+  <script>
+    let time = parseInt(sessionStorage.getItem('time') || 0, 10);
+    let interval;
+
+    function updateDisplay() {
+      let mins = Math.floor(time / 60);
+      let secs = time % 60;
+      document.getElementById('time').textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    document.getElementById('startStopBtn').addEventListener('click', function() {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+        this.textContent = 'Start';
+      } else {
+        interval = setInterval(() => {
+          time++;
+          sessionStorage.setItem('time', time); 
+          updateDisplay();
+        }, 1000);
+        this.textContent = 'Stop';
+      }
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', function() {
+      clearInterval(interval);
+      interval = null;
+      time = 0;
+      sessionStorage.removeItem('time');
+      updateDisplay();
+      document.getElementById('startStopBtn').textContent = 'Start';
+    });
+
+    updateDisplay(); 
+  </script>
+
+</body>
+</html>

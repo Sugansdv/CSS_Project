@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_140</title>
+</head>
+<body>
+
+<h2>Store JavaScript Object as JSON String</h2>
+
+<button onclick="storeObject()">Click to store</button>
+<p id="storedObject"></p>
+
+<script>
+function storeObject() {
+  const user = {
+    name: "Dharun",
+    age: 30,
+    city: "Madurai"
+  };
+
+  const jsonString = JSON.stringify(user);
+  localStorage.setItem("user", jsonString);
+  document.getElementById("storedObject").innerText = "Stored JSON: " + jsonString;
+}
+
+</script>
+
+</body>
+</html>

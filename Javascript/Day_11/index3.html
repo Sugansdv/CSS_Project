@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task_134</title>
+  <style>
+   
+    ul {
+      list-style: none;
+    }
+    li {
+      margin: 35px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Product List</h2>
+<ul id="productList"></ul>
+
+<h2>Your Cart</h2>
+<ul id="cartList"></ul>
+<button onclick="clearCart()">Clear Cart</button>
+
+<script>
+  const products = ["Pen", "Bag", "box"];
+
+  function displayProducts() {
+    const list = document.getElementById("productList");
+    list.innerHTML = "";
+    products.forEach(product => {
+      const li = document.createElement("li");
+      li.innerHTML = `${product} <button onclick="addToCart('${product}')">Add to Cart</button>`;
+      list.appendChild(li);
+    });
+  }
+
+  function addToCart(item) {
+    let cart = localStorage.getItem("cart");
+    cart = cart ? cart.split(",") : [];
+    cart.push(item);
+    localStorage.setItem("cart", cart.join(","));
+    displayCart();
+  }
+
+  function displayCart() {
+    const cartData = localStorage.getItem("cart");
+    const cart = cartData ? cartData.split(",") : [];
+    const list = document.getElementById("cartList");
+    list.innerHTML = "";
+    cart.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `${item} <button onclick="removeFromCart(${index})">❌</button>`;
+      list.appendChild(li);
+    });
+  }
+
+  function removeFromCart(index) {
+    let cart = localStorage.getItem("cart").split(",");
+    cart.splice(index, 1);
+    localStorage.setItem("cart", cart.join(","));
+    displayCart();
+  }
+
+  function clearCart() {
+    localStorage.removeItem("cart");
+    displayCart();
+  }
+
+  displayProducts();
+  displayCart();
+</script>
+
+</body>
+</html>

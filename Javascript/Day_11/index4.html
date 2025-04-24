@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_135</title>
+</head>
+<body>
+
+<h2>Simple Login System</h2>
+
+<button id="login">Login</button>
+<button id="logout">Logout</button>
+<p id="status"></p>
+
+<script>
+function checkSession() {
+  let user = sessionStorage.getItem("user");
+  document.getElementById("status").innerText = user ? "Logged In" : "Logged Out";
+}
+
+document.getElementById("login").addEventListener("click", function() {
+  sessionStorage.setItem("user", "Logged In");
+  checkSession();
+});
+document.getElementById("logout").addEventListener("click", function() {
+  sessionStorage.removeItem("user");
+  checkSession();
+});
+checkSession();
+</script>
+
+</body>
+</html>

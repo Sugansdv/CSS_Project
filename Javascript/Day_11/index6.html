@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_137</title>
+</head>
+<body>
+
+<h2>Welcome</h2>
+<p id="lastVisitMsg"></p>
+
+<nav>
+  <button onclick="visitPage('Home')">Home</button>
+  <button onclick="visitPage('About')">About</button>
+  <button onclick="visitPage('Contact')">Contact</button>
+</nav>
+
+<script>
+function showLastVisited() {
+  let lastVisited = localStorage.getItem("lastVisitedPage");
+  if (lastVisited) {
+    document.getElementById("lastVisitMsg").innerText = "You last visited: " + lastVisited;
+  }
+}
+function visitPage(page) {
+  localStorage.setItem("lastVisitedPage", page);
+  showLastVisited(); 
+}
+
+showLastVisited();
+
+</script>
+
+</body>
+</html>

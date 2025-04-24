@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_143</title>
+</head>
+<body>
+
+<p>You have visited this page <span id="visitCount">0</span> times.</p>
+
+<script>
+function trackPageVisits() {
+  let visitCount = localStorage.getItem("visitCount") || 0;
+  visitCount++;
+  document.getElementById("visitCount").innerText = visitCount;
+  localStorage.setItem("visitCount", visitCount);
+}
+trackPageVisits();
+</script>
+
+</body>
+</html>
