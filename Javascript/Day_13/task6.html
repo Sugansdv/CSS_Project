@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task_163</title>
+</head>
+<body>
+  <h2>JS163: Modify a JSON Object Inside an Array</h2>
+  
+  <button onclick="modifyEmployee()">Modify Employee</button>
+  <pre id="output"></pre>
+
+  <script>
+    fetch("data.json")
+  .then(response => response.json()) 
+  .then(employees => {
+    window.modifyEmployee = function() {
+      const employeeToModify = employees.find(employee => employee.id === 2);
+
+      if (employeeToModify) {
+        employeeToModify.name = "sugan";  
+        employeeToModify.email = "sugan@gmail.com"; 
+
+        document.getElementById("output").textContent = JSON.stringify(employees, null, 2);
+      } else {
+        document.getElementById("output").textContent = "Employee not found.";
+      }
+    }
+  })
+  .catch(error => console.error("Error loading the JSON file:", error));
+
+
+  </script>
+</body>
+</html>

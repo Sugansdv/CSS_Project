@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_166</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 20px;
+    }
+    .product {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>JS166: Find an object inside a JSON array based on a property value. </h1>
+  <h1>Find Product by Name or ID</h1>
+
+  <label for="searchInput">Enter Product Name or ID:</label>
+  <input type="text" id="searchInput" placeholder="e.g. Laptop or 2">
+  <button onclick="findProduct()">Search</button>
+
+  <div id="result"></div>
+
+  <script>
+    const products = [
+      { "id": 1, "name": "Laptop", "price": 999.99 },
+      { "id": 2, "name": "Smartphone", "price": 599.99 },
+      { "id": 3, "name": "Headphones", "price": 199.99 },
+      { "id": 4, "name": "Smartwatch", "price": 149.99 }
+    ];
+
+    function findProduct() {
+      const searchValue = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      const foundProduct = products.find(product => 
+        product.name.toLowerCase() === searchValue || product.id === parseInt(searchValue)
+      );
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = ''; 
+
+      if (foundProduct) {
+        resultDiv.innerHTML = `
+          <div class="product">
+            <strong>Product Name:</strong> ${foundProduct.name}<br>
+            <strong>Product ID:</strong> ${foundProduct.id}<br>
+            <strong>Price:</strong> $${foundProduct.price.toFixed(2)}
+          </div>
+        `;
+      } else {
+        resultDiv.innerHTML = `<p>No product found with that name or ID.</p>`;
+      }
+    }
+  </script>
+
+</body>
+</html>

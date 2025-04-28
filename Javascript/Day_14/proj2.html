@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Speed Tester</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    #startBtn { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #inputField { width: 80%; padding: 10px; font-size: 18px; }
+    #sentence { font-size: 18px; margin-top: 20px; }
+    #typingSpeed { font-size: 20px; font-weight: bold; margin-top: 20px; }
+    #timer { font-size: 16px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+<h2>Typing Speed Tester</h2>
+<button id="startBtn">Start</button>
+
+<div id="sentence" style="display:none;"></div>
+<input type="text" id="inputField" style="display:none;" placeholder="Start typing here...">
+<div id="timer" style="display:none;">Time: <span id="timeLeft">0</span>s</div>
+<div id="typingSpeed" style="display:none;"></div>
+
+<script>
+// Function to fetch a random sentence from the API
+async function fetchRandomSentence() {
+  const response = await fetch('https://api.quotable.io/random');
+  const data = await response.json();
+  return data.content;
+}
+
+// Function to start the typing speed test
+let startTime;
+let interval;
+
+async function startTypingTest() {
+  // Fetch and display the random sentence
+  const sentence = await fetchRandomSentence();
+  document.getElementById('sentence').innerText = sentence;
+  document.getElementById('sentence').style.display = 'block';
+  document.getElementById('inputField').style.display = 'block';
+  document.getElementById('timer').style.display = 'block';
+  document.getElementById('typingSpeed').style.display = 'none';
+  
+  // Initialize the timer
+  let timeLeft = 60;
+  document.getElementById('timeLeft').innerText = timeLeft;
+  startTime = new Date().getTime();
+  
+  interval = setInterval(() => {
+    const currentTime = new Date().getTime();
+    const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+    timeLeft = 60 - elapsedTime;
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      document.getElementById('timeLeft').innerText = 0;
+      calculateTypingSpeed();
+    } else {
+      document.getElementById('timeLeft').innerText = timeLeft;
+    }
+  }, 1000);
+}
+
+// Function to calculate typing speed
+function calculateTypingSpeed() {
+  const typedText = document.getElementById('inputField').value;
+  const originalSentence = document.getElementById('sentence').innerText;
+
+  if (typedText === originalSentence) {
+    const wordsTyped = typedText.split(' ').length;
+    const timeSpent = 60 - parseInt(document.getElementById('timeLeft').innerText);
+    const wordsPerMinute = Math.floor((wordsTyped / timeSpent) * 60);
+
+    document.getElementById('typingSpeed').innerText = `Your typing speed: ${wordsPerMinute} WPM`;
+  } else {
+    document.getElementById('typingSpeed').innerText = `You didn't type the sentence correctly!`;
+  }
+
+  document.getElementById('typingSpeed').style.display = 'block';
+}
+
+// Event listener for the Start button
+document.getElementById('startBtn').addEventListener('click', startTypingTest);
+
+// Event listener for the input field to track typing progress
+document.getElementById('inputField').addEventListener('input', function() {
+  if (document.getElementById('inputField').value === document.getElementById('sentence').innerText) {
+    calculateTypingSpeed();
+  }
+});
+</script>
+
+</body>
+</html>

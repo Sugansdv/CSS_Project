@@ -1,0 +1,43 @@
+[
+    {
+      "id": 1,
+      "name": "Laptop",
+      "price": 899,
+      "category": "Electronics",
+      "description": "A high-performance laptop with 16GB RAM and 512GB SSD.",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Smartphone",
+      "price": 299,
+      "category": "Electronics",
+      "description": "A budget-friendly smartphone with great features.",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "name": "Headphones",
+      "price": 99,
+      "category": "Accessories",
+      "description": "Wireless headphones with noise-cancelling technology.",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 4,
+      "name": "Smartwatch",
+      "price": 199,
+      "category": "Accessories",
+      "description": "A stylish smartwatch with heart rate monitor and fitness tracking.",
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 5,
+      "name": "Camera",
+      "price": 499,
+      "category": "Electronics",
+      "description": "A professional camera with 4K video recording.",
+      "image": "https://via.placeholder.com/150"
+    }
+  ]
+  

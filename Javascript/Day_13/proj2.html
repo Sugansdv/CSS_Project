@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-Commerce Product Catalog</title>
+  <style>
+    body {
+      padding: 20px;
+      text-align: center;
+    }
+    .filters input, .filters button {
+      margin: 5px;
+      padding: 5px 10px;
+    }
+    .product {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+      width: 180px;
+      vertical-align: top;
+    }
+    .product-details {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    #error {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>E-Commerce Product Catalog</h1>
+
+  <div class="filters">
+    <input type="number" id="priceFilter" placeholder="Filter by price">
+    <button onclick="filterProducts()">Filter</button>
+    <button onclick="sortProducts()">Sort by Price</button>
+  </div>
+
+  <div id="product-list"></div>
+
+  <div id="product-details" class="product-details">
+    <h3 id="product-name"></h3>
+    <p id="product-description"></p>
+    <p><strong>Price:</strong> $<span id="product-price"></span></p>
+  </div>
+
+  <div id="error"></div>
+
+  <script>
+    let products = [];
+    let filteredProducts = [];
+
+    fetch('products.json')
+      .then(response => response.json())
+      .then(data => {
+        products = data;
+        filteredProducts = [...products];
+        displayProducts(filteredProducts);
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+        document.getElementById('error').innerText = 'Failed to load products.';
+      });
+
+    function displayProducts(productsToDisplay) {
+      const productList = document.getElementById('product-list');
+      productList.innerHTML = '';
+
+      productsToDisplay.forEach(product => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = `
+          <h4>${product.name}</h4>
+          <p>Price: $${product.price}</p>
+          <p>Category: ${product.category}</p>
+          <button onclick="viewProductDetails(${product.id})">View Details</button>
+        `;
+        productList.appendChild(div);
+      });
+    }
+
+    function filterProducts() {
+      const priceLimit = document.getElementById('priceFilter').value;
+      filteredProducts = priceLimit ? products.filter(p => p.price <= priceLimit) : [...products];
+      displayProducts(filteredProducts);
+    }
+
+    function sortProducts() {
+      filteredProducts.sort((a, b) => a.price - b.price);
+      displayProducts(filteredProducts);
+    }
+
+    function viewProductDetails(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        document.getElementById('product-name').innerText = product.name;
+        document.getElementById('product-description').innerText = product.description;
+        document.getElementById('product-price').innerText = product.price;
+        document.getElementById('product-details').style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>

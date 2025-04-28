@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Currency Exchange Rates</title>
+  <style>
+    body { 
+        text-align: center; 
+    }
+    li{
+        list-style: none;
+    }
+    .exchange-rate { 
+        margin: 20px; 
+    }
+    button { 
+        padding: 10px 20px; 
+        cursor: pointer; 
+    }
+  </style>
+</head>
+<body>
+
+<h2>Currency Exchange Rates</h2>
+
+<input type="text" id="baseCurrency" placeholder="Base Currency (e.g., USD)">
+<button id="getRates">Get Exchange Rates</button>
+
+<div id="exchangeRates" class="exchange-rate"></div>
+
+<script>
+const apiKey = 'd3943766f5dcfeff2eff6ff7';
+const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/`; 
+
+async function fetchExchangeRates() {
+  const baseCurrency = document.getElementById('baseCurrency').value.toUpperCase();
+  const response = await fetch(`${apiUrl}${baseCurrency}`);
+  
+  
+  if (!response.ok) {
+    document.getElementById('exchangeRates').innerHTML = 'Failed to fetch exchange rates. Please try again later.';
+    return;
+  }
+  
+  const data = await response.json();
+
+  if (data.result === 'error') {
+    document.getElementById('exchangeRates').innerHTML = 'Invalid base currency code.';
+    return;
+  }
+
+  const rates = data.conversion_rates;
+  let ratesHtml = `<h3>Exchange Rates for ${baseCurrency}:</h3><ul>`;
+  
+  for (let [currency, rate] of Object.entries(rates)) {
+    ratesHtml += `<li>${currency}: ${rate}</li>`;
+  }
+  
+  ratesHtml += '</ul>';
+  document.getElementById('exchangeRates').innerHTML = ratesHtml;
+}
+
+document.getElementById('getRates').addEventListener('click', fetchExchangeRates);
+</script>
+
+</body>
+</html>

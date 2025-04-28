@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_167</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #result {
+      margin-top: 20px;
+    }
+    .product {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Catalog</h1>
+
+  <h3>Product List:</h3>
+  <div id="result"></div>
+
+  <h3>Add a New Product:</h3>
+  <label for="productId">Product ID:</label>
+  <input type="number" id="productId" placeholder="Enter Product ID" required>
+
+  <label for="productName">Product Name:</label>
+  <input type="text" id="productName" placeholder="Enter Product Name" required>
+
+  <label for="productPrice">Product Price:</label>
+  <input type="number" id="productPrice" placeholder="Enter Product Price" required>
+
+  <button onclick="addProduct()">Add Product</button>
+
+  <script>
+    let products = [
+      { "id": 1, "name": "Laptop", "price": 999.99 },
+      { "id": 2, "name": "Smartphone", "price": 599.99 },
+      { "id": 3, "name": "Headphones", "price": 199.99 },
+      { "id": 4, "name": "Smartwatch", "price": 149.99 }
+    ];
+
+    function displayProducts(products) {
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '';  
+      
+      products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product');
+        productDiv.innerHTML = `
+          <strong>Product ID:</strong> ${product.id}<br>
+          <strong>Name:</strong> ${product.name}<br>
+          <strong>Price:</strong> $${product.price.toFixed(2)}
+        `;
+        resultDiv.appendChild(productDiv);
+      });
+    }
+
+    function addProduct() {
+      const productId = document.getElementById('productId').value;
+      const productName = document.getElementById('productName').value;
+      const productPrice = document.getElementById('productPrice').value;
+
+      if (productId && productName && productPrice) {
+        const newProduct = {
+          id: parseInt(productId), 
+          name: productName,
+          price: parseFloat(productPrice)
+        };
+
+        products.push(newProduct);
+
+        displayProducts(products);
+
+        document.getElementById('productId').value = '';
+        document.getElementById('productName').value = '';
+        document.getElementById('productPrice').value = '';
+      } else {
+        alert("Please fill in all fields.");
+      }
+    }
+
+    displayProducts(products);
+  </script>
+
+</body>
+</html>

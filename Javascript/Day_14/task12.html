@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Functionality</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    input, button { padding: 10px 20px; font-size: 16px; }
+    .search-results { margin-top: 20px; }
+    .post { margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+    .error { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h2>Search Posts</h2>
+
+<!-- Search Input -->
+<input type="text" id="searchQuery" placeholder="Enter search term">
+<button id="searchBtn">Search</button>
+
+<!-- Display Search Results -->
+<div id="searchResults" class="search-results"></div>
+<div id="error" class="error"></div>
+
+<script>
+// Function to fetch data from the API based on the search query using async/await
+async function searchPosts() {
+  const searchQuery = document.getElementById('searchQuery').value.trim();
+  const errorElement = document.getElementById('error');
+  const resultsElement = document.getElementById('searchResults');
+  errorElement.textContent = ''; // Clear previous errors
+  resultsElement.innerHTML = ''; // Clear previous results
+
+  // If no query is provided, alert the user
+  if (searchQuery === '') {
+    errorElement.textContent = 'Please enter a search term.';
+    return;
+  }
+
+  const url = `https://jsonplaceholder.typicode.com/posts?title_like=${searchQuery}`;
+
+  // Fetching the data from API
+  const response = await fetch(url);
+
+  // Check if response is OK (status code 200)
+  if (!response.ok) {
+    errorElement.textContent = 'Failed to fetch data from the API.';
+    return;
+  }
+
+  const data = await response.json();
+
+  // Check if no results are found
+  if (data.length === 0) {
+    errorElement.textContent = `No results found for "${searchQuery}".`;
+    return;
+  }
+
+  // Display the search results
+  let resultsHtml = `<h3>Search Results for "${searchQuery}":</h3><ul>`;
+  
+  data.forEach(post => {
+    resultsHtml += `
+      <div class="post">
+        <h4>${post.title}</h4>
+        <p>${post.body}</p>
+      </div>
+    `;
+  });
+
+  resultsHtml += '</ul>';
+  resultsElement.innerHTML = resultsHtml;
+}
+
+// Event listener for the search button
+document.getElementById('searchBtn').addEventListener('click', searchPosts);
+</script>
+
+</body>
+</html>

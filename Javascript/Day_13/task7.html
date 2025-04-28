@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task_164</title>
+</head>
+<body>
+  <h2>JS164: Filter Employees By Age</h2>
+  
+  <button onclick="filterEmployees()">Filter Employees (Age > 30)</button>
+  <pre id="output"></pre>
+
+  <script>
+    fetch("data.json")
+  .then(response => response.json()) 
+  .then(employees => {
+    window.filterEmployees = function() {
+      const filteredEmployees = employees.filter(employee => employee.age > 30);
+
+      if (filteredEmployees.length > 0) {
+        document.getElementById("output").textContent = JSON.stringify(filteredEmployees, null, 2);
+      } else {
+        document.getElementById("output").textContent = "No employees found with age > 30.";
+      }
+    }
+  })
+  .catch(error => console.error("Error loading the JSON file:", error));
+
+  </script>
+</body>
+</html>

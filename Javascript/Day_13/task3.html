@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task_160</title>
+</head>
+<body>
+  <h2>JS160. Create a JSON file (data.json) and fetch it using JavaScript. </h2>
+  
+  <button onclick="fetchJSON()">Fetch JSON Data</button>
+  <pre id="output"></pre>
+
+  <script>
+      function fetchJSON() {
+    fetch('data.json') 
+      .then(response => response.json()) 
+      .then(data => {
+        document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+      });
+  }
+  
+  </script>
+</body>
+</html>

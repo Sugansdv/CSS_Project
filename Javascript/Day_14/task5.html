@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Profile Viewer</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+        }
+        #profileData {
+            margin-top: 20px;
+        }
+        img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>GitHub Profile Viewer</h2>
+    <input type="text" id="username" placeholder="Enter GitHub Username" required>
+    <button id="getProfile">Get Profile</button>
+    
+    <div id="profileData"></div>
+
+    <script>
+        async function fetchGitHubProfile() {
+            let username = document.getElementById("username").value;
+            let apiUrl = `https://api.github.com/users/${username}`;
+
+            let response = await fetch(apiUrl);
+            
+            if (!response.ok) {
+                document.getElementById("profileData").innerHTML = `
+                    <h3>Error!</h3>
+                    <p>GitHub user not found. Please check the username.</p>
+                `;
+                return;
+            }
+
+            let data = await response.json();
+        
+            let name = data.name || "No name provided";
+            let bio = data.bio || "No bio available";
+            let avatar = data.avatar_url;
+            let reposCount = data.public_repos;
+            let followersCount = data.followers;
+            let followingCount = data.following;
+
+            document.getElementById("profileData").innerHTML = `
+                <h3>Profile of ${username}</h3>
+                <img src="${avatar}" alt="Avatar">
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Bio:</strong> ${bio}</p>
+                <p><strong>Repositories:</strong> ${reposCount}</p>
+                <p><strong>Followers:</strong> ${followersCount}</p>
+                <p><strong>Following:</strong> ${followingCount}</p>
+            `;
+        }
+
+        document.getElementById("getProfile").addEventListener("click", fetchGitHubProfile);
+    </script>
+
+</body>
+</html>

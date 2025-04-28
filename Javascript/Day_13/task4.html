@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task_161</title>
+</head>
+<body>
+  <h2>JS161. Store an array of objects in LocalStorage as JSON and retrieve it. </h2>
+  <button onclick="storeToLocal()">Store to LocalStorage</button>
+  <button onclick="retrieveFromLocal()">Retrieve from LocalStorage</button>
+  <ul id="output"></ul>
+
+  <script>
+    function storeToLocal() {
+    fetch("data.json")
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem("employeeList", JSON.stringify(data));
+        alert("Data stored in LocalStorage!");
+      })
+      .catch(err => console.error("Fetch error:", err));
+  }
+  
+  function retrieveFromLocal() {
+    let list = document.getElementById("output");
+    list.innerHTML = ""; 
+  
+    const jsonData = localStorage.getItem("employeeList");
+    if (!jsonData) {
+      list.innerHTML = "<li>No data found in LocalStorage.</li>";
+      return;
+    }
+  
+    const employees = JSON.parse(jsonData);
+    employees.forEach(emp => {
+      list.innerHTML += `<li>${emp.id} - ${emp.name} (${emp.email})</li>`;
+    });
+  }
+  
+  </script>
+</body>
+</html>

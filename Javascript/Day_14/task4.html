@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+        }
+        #weatherData {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Weather App</h2>
+    <input type="text" id="city" placeholder="Enter a city" required>
+    <button id="getWeather">Get Weather</button>
+    
+    <div id="weatherData"></div>
+
+    <script>
+        async function fetchWeatherData() {
+            let city = document.getElementById("city").value;
+            let apiKey = "190774ba47fa9865df3d765795e32d5d"; 
+            let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+            let response = await fetch(apiUrl);
+            
+            if (!response.ok) {
+                document.getElementById("weatherData").innerHTML = `
+                    <h3>Error!</h3>
+                    <p>City not found or invalid API key.</p>
+                `;
+                return;
+            }
+
+            let data = await response.json();
+            
+            let temperature = data.main.temp;
+            let weatherDescription = data.weather[0].description;
+            let humidity = data.main.humidity;
+            let windSpeed = data.wind.speed;
+
+            document.getElementById("weatherData").innerHTML = `
+                <h3>Weather in ${city}</h3>
+                <p><strong>Temperature:</strong> ${temperature}°C</p>
+                <p><strong>Description:</strong> ${weatherDescription}</p>
+                <p><strong>Humidity:</strong> ${humidity}%</p>
+                <p><strong>Wind Speed:</strong> ${windSpeed} m/s</p>
+            `;
+        }
+
+        document.getElementById("getWeather").addEventListener("click", fetchWeatherData);
+    </script>
+
+</body>
+</html>

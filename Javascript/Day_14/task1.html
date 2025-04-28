@@ -1,0 +1,49 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Random Joke App</title> 
+    <style> 
+        body { 
+            text-align: center; 
+        } 
+        input, button { 
+            padding: 20px; 
+        } 
+    </style> 
+</head> 
+<body> 
+
+    <h2>Random Joke App</h2> 
+    <button id="getJoke">Get Random Joke</button> 
+    <p id="joke"></p> 
+
+    <script> 
+        async function fetchJoke() { 
+            let response = await fetch('https://v2.jokeapi.dev/joke/Programming?type=single', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (!response.ok) {
+                document.getElementById("joke").innerText = "Failed to fetch joke, please try again.";
+                return;
+            }
+
+            let data = await response.json();
+
+            if (data.joke) {
+                document.getElementById("joke").innerText = data.joke;
+            } else {
+                document.getElementById("joke").innerText = "Sorry, no joke available right now!";
+            }
+        }
+
+        document.getElementById("getJoke").addEventListener("click", fetchJoke);
+    </script>
+
+</body> 
+</html>

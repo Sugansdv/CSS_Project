@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Post List App</title> 
+    <style> 
+        body { 
+            text-align: center; 
+        } 
+        button { 
+            padding: 20px; 
+        } 
+        #posts li {
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style> 
+</head> 
+<body> 
+
+    <h2>Post List App</h2> 
+    <button id="getPosts">Fetch Posts</button> 
+    <ul id="posts"></ul> 
+
+    <script> 
+        async function fetchPosts() { 
+            let response = await fetch('https://jsonplaceholder.typicode.com/posts');
+            
+            if (!response.ok) {
+                alert("Failed to fetch posts, please try again.");
+                return;
+            }
+            
+            let data = await response.json();
+
+            document.getElementById("posts").innerHTML = '';
+
+            data.forEach(post => {
+                let li = document.createElement("li");
+                li.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.body}</p>
+                `;
+                document.getElementById("posts").appendChild(li);
+            });
+        }
+
+        document.getElementById("getPosts").addEventListener("click", fetchPosts);
+    </script>
+
+</body> 
+</html>

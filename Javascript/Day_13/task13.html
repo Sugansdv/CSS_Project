@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task_170</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 50px;
+    }
+    #weather {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #333;
+    }
+    #error {
+      margin-top: 20px;
+      font-size: 18px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Madurai Weather App</h1>
+  <button onclick="getMaduraiWeather()">Get Madurai Weather</button>
+
+  <div id="weather"></div>
+  <div id="error"></div>
+
+  <script>
+    const apiKey = "190774ba47fa9865df3d765795e32d5d";
+
+    function getMaduraiWeather() {
+      const city = "Madurai";
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      fetch(apiUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          const temperature = data.main.temp;
+          const description = data.weather[0].description;
+          document.getElementById('weather').innerHTML =
+            `Temperature in Madurai: ${temperature}°C <br> Weather: ${description}`;
+          document.getElementById('error').innerHTML = '';
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          document.getElementById('error').innerHTML = 'Failed to fetch Madurai weather. Please try again!';
+          document.getElementById('weather').innerHTML = ''; 
+        });
+    }
+  </script>
+
+</body>
+</html>

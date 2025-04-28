@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_169</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 20px;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fruit Selection</h1>
+
+  <select id="fruitDropdown">
+    <option value="">Select a Fruit</option>
+  </select>
+
+  <button onclick="showSelectedFruit()">Show Selected Fruit</button>
+
+  <script>
+    fetch('fruits.json')
+      .then(response => response.json())
+      .then(data => populateDropdown(data))
+      .catch(error => console.error('Error fetching data:', error));
+
+    function populateDropdown(fruits) {
+      const dropdown = document.getElementById('fruitDropdown');
+      
+      fruits.forEach(fruit => {
+        const option = document.createElement('option');
+        option.value = fruit.id; 
+        option.textContent = fruit.name; 
+        dropdown.appendChild(option);
+      });
+    }
+    function showSelectedFruit() {
+      const dropdown = document.getElementById('fruitDropdown');
+      const selectedValue = dropdown.value;
+      const selectedOption = dropdown.options[dropdown.selectedIndex].text;
+
+      if (selectedValue) {
+        alert(`You selected: ${selectedOption}`);
+      } else {
+        alert('Please select a fruit');
+      }
+    }
+  </script>
+
+</body>
+</html>

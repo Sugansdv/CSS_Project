@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_168</title>
+  <style>
+    body {
+      text-align: center;
+      padding: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Remove Product</h1>
+  
+  <label for="productId">Enter Product ID to Remove:</label>
+  <input type="number" id="productId" placeholder="Enter ID" />
+  <button onclick="removeProduct()">Remove Product</button>
+
+  <div id="result"></div>
+
+  <script>
+    let products = [
+      { "id": 1, "name": "Laptop" },
+      { "id": 2, "name": "Smartphone" },
+      { "id": 3, "name": "Headphones" },
+      { "id": 4, "name": "Smartwatch" }
+    ];
+
+    function removeProduct() {
+      const productId = document.getElementById('productId').value;
+      const productIndex = products.findIndex(product => product.id === parseInt(productId));
+
+      if (productIndex !== -1) {
+        products.splice(productIndex, 1);
+
+        document.getElementById('result').innerHTML = `
+          Product with ID ${productId} removed.<br>
+          Updated Product List: <pre>${JSON.stringify(products, null, 2)}</pre>
+        `;
+      } else {
+        document.getElementById('result').innerHTML = `Product with ID ${productId} not found.`;
+      }
+    }
+  </script>
+
+</body>
+</html>

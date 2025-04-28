@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task_165</title>
+</head>
+<body>
+  <h2>JS165: Sort Products by Price</h2>
+  
+  <button onclick="sortByPriceAsc()">Sort by Price (Ascending)</button>
+  <button onclick="sortByPriceDesc()">Sort by Price (Descending)</button>
+  
+  <pre id="output"></pre>
+
+  <script>
+    fetch("data1.json")
+  .then(response => response.json()) 
+  .then(products => {
+    window.sortByPriceAsc = function() {
+      const sortedProducts = products.sort((a, b) => a.price - b.price);
+
+      document.getElementById("output").textContent = JSON.stringify(sortedProducts, null, 2);
+    }
+
+    window.sortByPriceDesc = function() {
+      const sortedProducts = products.sort((a, b) => b.price - a.price);
+
+      document.getElementById("output").textContent = JSON.stringify(sortedProducts, null, 2);
+    }
+  })
+  .catch(error => console.error("Error loading the JSON file:", error));
+
+  </script>
+</body>
+</html>

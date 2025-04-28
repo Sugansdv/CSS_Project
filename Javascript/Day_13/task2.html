@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task_159</title>
+</head>
+<body>
+  <h2>JS159. Convert a JSON string back to a JavaScript object using JSON.parse()</h2>
+  <button onclick="parseJSON()">Convert JSON String to Object</button>
+  <pre id="output"></pre>
+
+  <script>
+    
+const jsonString = '{ "id": 1, "name": "Dharun", "email": "dharun@gmail.com" }';
+
+function parseJSON() {
+    const obj = JSON.parse(jsonString); 
+    document.getElementById("output").textContent = JSON.stringify(obj, null, 2); 
+  }
+
+  </script>
+</body>
+</html>
