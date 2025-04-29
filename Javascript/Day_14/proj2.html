@@ -1,96 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typing Speed Tester</title>
+  <title>Air Quality Checker</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
-    #startBtn { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    #inputField { width: 80%; padding: 10px; font-size: 18px; }
-    #sentence { font-size: 18px; margin-top: 20px; }
-    #typingSpeed { font-size: 20px; font-weight: bold; margin-top: 20px; }
-    #timer { font-size: 16px; margin-top: 10px; }
+    body {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    select,
+    button {
+      padding: 10px;
+      font-size: 1.2em;
+      margin: 10px;
+    }
+
+    #result {
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .good {
+      color: green;
+    }
+
+    .moderate {
+      color: orange;
+    }
+
+    .unhealthy {
+      color: red;
+    }
   </style>
 </head>
+
 <body>
 
-<h2>Typing Speed Tester</h2>
-<button id="startBtn">Start</button>
+  <h1>Air Quality Checker</h1>
 
-<div id="sentence" style="display:none;"></div>
-<input type="text" id="inputField" style="display:none;" placeholder="Start typing here...">
-<div id="timer" style="display:none;">Time: <span id="timeLeft">0</span>s</div>
-<div id="typingSpeed" style="display:none;"></div>
+  <select id="city">
+    <option value="Delhi">Delhi</option>
+    <option value="Mumbai">Mumbai</option>
+    <option value="Chennai">Chennai</option>
+    <option value="Bengaluru">Bengaluru</option>
+    <option value="Kolkata">Kolkata</option>
+    <option value="Hyderabad">Hyderabad</option>
+    <option value="Ahmedabad">Ahmedabad</option>
+    <option value="Jaipur">Jaipur</option>
+    <option value="Lucknow">Lucknow</option>
+    <option value="Pune">Pune</option>
+  </select>
 
-<script>
-// Function to fetch a random sentence from the API
-async function fetchRandomSentence() {
-  const response = await fetch('https://api.quotable.io/random');
-  const data = await response.json();
-  return data.content;
-}
+  <button onclick="getAQI()">Check AQI</button>
 
-// Function to start the typing speed test
-let startTime;
-let interval;
+  <div id="result">
+    <p>Select city and Check AQI</p>
+  </div>
 
-async function startTypingTest() {
-  // Fetch and display the random sentence
-  const sentence = await fetchRandomSentence();
-  document.getElementById('sentence').innerText = sentence;
-  document.getElementById('sentence').style.display = 'block';
-  document.getElementById('inputField').style.display = 'block';
-  document.getElementById('timer').style.display = 'block';
-  document.getElementById('typingSpeed').style.display = 'none';
-  
-  // Initialize the timer
-  let timeLeft = 60;
-  document.getElementById('timeLeft').innerText = timeLeft;
-  startTime = new Date().getTime();
-  
-  interval = setInterval(() => {
-    const currentTime = new Date().getTime();
-    const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-    timeLeft = 60 - elapsedTime;
-    if (timeLeft <= 0) {
-      clearInterval(interval);
-      document.getElementById('timeLeft').innerText = 0;
-      calculateTypingSpeed();
-    } else {
-      document.getElementById('timeLeft').innerText = timeLeft;
+  <script>
+    const apiKey = '190774ba47fa9865df3d765795e32d5d';
+
+    const cityCoords = {
+      "Delhi": { lat: 28.7041, lon: 77.1025 },
+      "Mumbai": { lat: 19.0760, lon: 72.8777 },
+      "Chennai": { lat: 13.0827, lon: 80.2707 },
+      "Bengaluru": { lat: 12.9716, lon: 77.5946 },
+      "Kolkata": { lat: 22.5726, lon: 88.3639 },
+      "Hyderabad": { lat: 17.3850, lon: 78.4867 },
+      "Ahmedabad": { lat: 23.0225, lon: 72.5714 },
+      "Jaipur": { lat: 26.9124, lon: 75.7873 },
+      "Lucknow": { lat: 26.8467, lon: 80.9462 },
+      "Pune": { lat: 18.5204, lon: 73.8567 }
+    };
+
+    async function getAQI() {
+      const city = document.getElementById('city').value;
+      const result = document.getElementById('result');
+
+      result.innerHTML = 'Fetching data...';
+
+      const { lat, lon } = cityCoords[city];
+
+      fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+        .then(response => {
+          if (!response.ok) {
+            result.innerHTML = `<p style="color:red;">Error fetching AQI data. Please try again later!</p>`;
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const aqi = data.list[0].main.aqi;
+
+          let advice = '';
+          if (aqi === 1) {
+            advice = 'Good air quality. Enjoy the fresh air!';
+            result.className = 'good';
+          } else if (aqi === 2 || aqi === 3) {
+            advice = 'Moderate air quality. Sensitive groups should take care.';
+            result.className = 'moderate';
+          } else {
+            advice = 'Unhealthy air quality. Avoid outdoor activities!';
+            result.className = 'unhealthy';
+          }
+
+          result.innerHTML = `
+            <h2>${city}</h2>
+            <p><strong>AQI Level:</strong> ${aqi}</p>
+            <p><strong>Health Advice:</strong> ${advice}</p>
+          `;
+        })
+        .catch(error => {
+          console.error(error);
+          result.innerHTML = `<p style="color:red;">Error fetching AQI data. Please try again later!</p>`;
+        });
     }
-  }, 1000);
-}
-
-// Function to calculate typing speed
-function calculateTypingSpeed() {
-  const typedText = document.getElementById('inputField').value;
-  const originalSentence = document.getElementById('sentence').innerText;
-
-  if (typedText === originalSentence) {
-    const wordsTyped = typedText.split(' ').length;
-    const timeSpent = 60 - parseInt(document.getElementById('timeLeft').innerText);
-    const wordsPerMinute = Math.floor((wordsTyped / timeSpent) * 60);
-
-    document.getElementById('typingSpeed').innerText = `Your typing speed: ${wordsPerMinute} WPM`;
-  } else {
-    document.getElementById('typingSpeed').innerText = `You didn't type the sentence correctly!`;
-  }
-
-  document.getElementById('typingSpeed').style.display = 'block';
-}
-
-// Event listener for the Start button
-document.getElementById('startBtn').addEventListener('click', startTypingTest);
-
-// Event listener for the input field to track typing progress
-document.getElementById('inputField').addEventListener('input', function() {
-  if (document.getElementById('inputField').value === document.getElementById('sentence').innerText) {
-    calculateTypingSpeed();
-  }
-});
-</script>
+  </script>
 
 </body>
+
 </html>
