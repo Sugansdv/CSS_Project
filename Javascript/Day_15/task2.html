@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_2</title>
+</head>
+<body>
+
+  <h2>2. Catch and handle a Reference Error when trying to use an undefined variable. </h2>
+
+  <button onclick="handleReferenceError()">Run Code</button>
+  <p id="errorMessage"></p>
+  <p id="result"></p> 
+
+  <script>
+    function handleReferenceError() {
+      try {
+        // let x = 5;
+        let result = x + 10;  
+        document.getElementById("result").innerText = "Result: " + result; 
+      } catch (error) {
+        if (error instanceof ReferenceError) {
+            console.error("Error:", error.message);
+          document.getElementById("errorMessage").innerText = "Reference Error: " + error.message;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

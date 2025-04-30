@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_7</title>
+</head>
+<body>
+
+  <h2>7. Use console.table() to display an array of objects in tabular form</h2>
+  <button onclick="displayTable()">Display Table</button>
+
+  <script>
+    function displayTable() {
+      const students = [
+        { name: "Joe", age: 25, grade: "A" },
+        { name: "Alan", age: 22, grade: "B" },
+        { name: "Dev", age: 23, grade: "C" },
+        { name: "Eve", age: 24, grade: "A" }
+      ];
+
+      console.table(students);
+    }
+  </script>
+
+</body>
+</html>

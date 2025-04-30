@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_12</title>
+</head>
+<body>
+  <h1>12. Prevent infinite recursion by handling a function call limit. </h1>
+  
+  <p>Enter numbers separated by commas (e.g., 1, 2, 3, 4, 5):</p>
+  <input type="text" id="numbersInput" placeholder="Enter numbers">
+  <button onclick="calculateSum()">Calculate Sum</button>
+  
+  <p id="result"></p>
+  
+  <script>
+    function sumArray(arr, limit, callCount = 0) {
+      if (callCount > limit) {
+        throw new Error("Recursion limit reached.");
+      }
+      if (arr.length === 0) {
+        return 0;
+      }
+
+      return arr[0] + sumArray(arr.slice(1), limit, callCount + 1);
+    }
+
+    function calculateSum() {
+      const input = document.getElementById("numbersInput").value;
+      const numbers = input.split(',').map(num => parseFloat(num.trim()));
+
+      if (numbers.some(isNaN)) {
+        document.getElementById("result").innerText = "Please enter valid numbers.";
+        return;
+      }
+
+      const recursionLimit = 10; 
+
+      try {
+        const result = sumArray(numbers, recursionLimit);
+        document.getElementById("result").innerText = `The sum is: ${result}`;
+      } catch (error) {
+        document.getElementById("result").innerText = `Error: ${error.message}`;
+      }
+    }
+  </script>
+</body>
+</html>

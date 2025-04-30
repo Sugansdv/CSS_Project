@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_4</title>
+</head>
+
+<body>
+
+    <h2>4. Throw a custom error when a user inputs an invalid age. </h2>
+
+    <button onclick="checkAge()">Submit Age</button>
+    <p id="errorMessage"></p> 
+    <p id="result"></p> 
+
+    <script>
+        function checkAge() {
+            document.getElementById("errorMessage").innerText = "";
+            document.getElementById("result").innerText = "";
+            try {
+                let age = parseInt(prompt("Enter your age:"));
+
+                if (isNaN(age)) {
+                    throw new Error("Age must be a number!");
+                }
+
+                if (age < 18) {
+                    throw new Error("Age must be 18 or above!");
+                }
+
+                document.getElementById("result").innerText = "Access granted. Welcome!";
+
+            } catch (error) {
+                console.error("Error:", error.message);
+                document.getElementById("errorMessage").innerText = "Error: " + error.message;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_10</title>
+</head>
+<body>
+
+  <h2>10. Handle an API call failure using try...catch. </h2>
+  <button onclick="fetchData()">Fetch Data</button>
+  <p id="output"></p>
+
+  <script>
+    async function fetchData() {
+    //   const url = "https://jsonplaceholder.typicode.com/users";  
+    const url = "https://invalid-url.com/api/users"; 
+      try {
+        let response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+        }
+
+        let data = await response.json();
+        document.getElementById("output").innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        document.getElementById("output").innerText = `Error: ${error.message}`;
+      }
+    }
+  </script>
+
+</body>
+</html>

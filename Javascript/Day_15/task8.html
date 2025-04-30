@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_8</title>
+</head>
+<body>
+
+  <h2>8. Debug an application using console.warn() and console.error()</h2>
+  <button onclick="performCalculation()">Perform Calculation</button>
+  <p id="output"></p>
+
+  <script>
+    function performCalculation() {
+      let num1 = prompt("Enter the numerator:");
+        let num2 = prompt("Enter the Denominator:");
+      if (num2 === 0) {
+        console.warn("Warning: Attempting to divide by zero.");
+      }
+      
+      try {
+        const result = num1 / num2;
+
+        if (!isFinite(result)) {
+          throw new Error("Division by zero is not allowed.");
+        }
+
+        document.getElementById("output").innerText = `Result: ${result}`;
+      } catch (error) {
+        console.error("Error:", error.message);
+        document.getElementById("output").innerText = error.message;
+      }
+    }
+  </script>
+
+</body>
+</html>

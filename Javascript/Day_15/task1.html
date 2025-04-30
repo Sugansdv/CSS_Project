@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_1</title>
+</head>
+<body>
+
+  <h2>1. Write a program that handles a syntax error using try...catch. </h2>
+
+  <button onclick="handleSyntaxError()">Run Code</button>
+  <p id="errorMessage"></p>
+  <p id="result"></p> 
+
+  <script>
+    function handleSyntaxError() {
+      try {
+        let result = eval("2 + (3 * 5");  
+        document.getElementById("result").innerText = "Result: " + result;
+      } catch (error) {
+        console.error("Error:", error.message);
+        document.getElementById("errorMessage").innerText = "Syntax Error: " + error.message;
+      }
+    }
+  </script>
+
+</body>
+</html>

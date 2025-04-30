@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_3</title>
+</head>
+<body>
+
+  <h2>3. Use try...catch to handle division by zero error. </h2>
+
+  <button onclick="handleDivision()">Divide</button>
+  <p id="errorMessage"></p> 
+  <p id="result"></p> 
+
+  <script>
+    function handleDivision() {
+      try {
+        let num1 = parseFloat(prompt("Enter the numerator:"));
+        let num2 = parseFloat(prompt("Enter the denominator:"));
+       
+        if (num2 === 0) {
+          throw new Error("Cannot divide by zero!");
+        }
+
+        let result = num1 / num2;
+        document.getElementById("result").innerText = "Result: " + result; 
+
+      } catch (error) {
+        console.error("Error:", error.message);
+        document.getElementById("errorMessage").innerText = "Error: " + error.message;
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_5</title>
+</head>
+<body>
+
+  <h2>5. Create a function that throws a TypeError if input is not a number. </h2>
+
+  <button onclick="checkNumber()">Submit Number</button>
+  <p id="errorMessage"></p> 
+  <p id="result"></p> 
+
+  <script>
+    function checkNumber() {
+      document.getElementById("errorMessage").innerText = "";
+      document.getElementById("result").innerText = "";
+
+      try {
+        let input = prompt("Please enter a number:");
+        
+        if (isNaN(input)) {
+          throw new TypeError("Input must be a valid number!");
+        }
+
+        document.getElementById("result").innerText = `You entered a valid number: ${input}`;
+        
+      } catch (error) {
+        console.error("Error:", error.message);
+        document.getElementById("errorMessage").innerText = "Error: " + error.message;
+      }
+    }
+  </script>
+
+</body>
+</html>

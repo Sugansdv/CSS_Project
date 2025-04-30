@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_13</title>
+</head>
+<body>
+  <h1>13. Implement a real-world error logging system using LocalStorage.</h1>
+  
+  <p>Enter a number to divide by:</p>
+  <input type="text" id="numberInput" placeholder="Enter a number">
+  <button onclick="performDivision()">Divide by 10</button>
+  
+  <p id="result"></p>
+  <h2>Error Logs</h2>
+  <ul id="errorLogs"></ul>
+  
+  <script>
+    function logError(message, details) {
+      const errorLog = {
+        timestamp: new Date().toISOString(),
+        message: message,
+        details: details
+      };
+      
+      let logs = JSON.parse(localStorage.getItem('errorLogs')) || [];
+      
+      logs.push(errorLog);
+      
+      localStorage.setItem('errorLogs', JSON.stringify(logs));
+      
+      displayErrorLogs();
+    }
+    
+    function displayErrorLogs() {
+      const logs = JSON.parse(localStorage.getItem('errorLogs')) || [];
+      const logsContainer = document.getElementById('errorLogs');
+      logsContainer.innerHTML = '';
+      
+      logs.forEach(log => {
+        const listItem = document.createElement('li');
+        listItem.innerText = `${log.timestamp}: ${log.message} - ${log.details}`;
+        logsContainer.appendChild(listItem);
+      });
+    }
+    
+    function performDivision() {
+      const numberInput = document.getElementById('numberInput').value;
+      
+      try {
+        if (!numberInput || isNaN(numberInput)) {
+          throw new Error("Invalid input! Please enter a number.");
+        }
+        
+        const number = parseFloat(numberInput);
+        if (number === 0) {
+          throw new Error("Division by zero is not allowed!");
+        }
+        
+        const result = 10 / number;
+        document.getElementById('result').innerText = `Result: ${result}`;
+        
+      } catch (error) {
+        document.getElementById('result').innerText = `Error: ${error.message}`;
+        logError(error.message, `Attempted to divide by: ${numberInput}`);
+      }
+    }
+
+    window.onload = displayErrorLogs;
+  </script>
+</body>
+</html>

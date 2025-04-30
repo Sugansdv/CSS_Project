@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_11</title>
+</head>
+<body>
+
+  <h2>11. Use finally to execute cleanup code even if an error occurs. </h2>
+  <button onclick="fetchData()">Fetch Data</button>
+  <p id="output"></p>
+
+  <script>
+    async function fetchData() {
+      const url = "https://jsonplaceholder.typicode.com/users";  // Valid URL
+      let loadingMessage = document.createElement("p");
+      loadingMessage.innerText = "Loading...";
+      document.body.appendChild(loadingMessage);
+      
+      try {
+        let response = await fetch(url);
+        
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status} - ${response.statusText}`);
+        }
+
+        let data = await response.json();
+        document.getElementById("output").innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        document.getElementById("output").innerText = `Error: ${error.message}`;
+        
+      } finally {
+        document.body.removeChild(loadingMessage); 
+        console.log("Cleanup completed: Loading message removed");
+      }
+    }
+  </script>
+
+</body>
+</html>

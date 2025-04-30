@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task_6</title>
+</head>
+<body>
+
+  <h2>6. Implement nested try...catch blocks to handle multiple errors. </h2>
+
+  <button onclick="performOperation()">Submit Numbers</button>
+  <p id="errorMessage"></p> 
+  <p id="result"></p> 
+
+  <script>
+    function performOperation() {
+      document.getElementById("errorMessage").innerText = "";
+      document.getElementById("result").innerText = "";
+
+      try {
+        let num1 = prompt("Enter the numerator:");
+        let num2 = prompt("Enter the Denominator:");
+
+        try {
+          if (isNaN(num1) || isNaN(num2)) {
+            throw new TypeError("Both inputs must be numbers.");
+          }
+
+          num1 = parseFloat(num1);
+          num2 = parseFloat(num2);
+
+          if (num2 === 0) {
+            throw new Error("Cannot divide by zero.");
+          }
+
+          let result = num1 / num2;
+          document.getElementById("result").innerText = `The result of division is: ${result}`;
+
+        } catch (innerError) {
+          document.getElementById("errorMessage").innerText = "Inner Error: " + innerError.message;
+        }
+
+      } catch (outerError) {
+        console.error("Error:", error.message);
+        document.getElementById("errorMessage").innerText = "Outer Error: " + outerError.message;
+      }
+    }
+  </script>
+
+</body>
+</html>
