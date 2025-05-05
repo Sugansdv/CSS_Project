@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_7</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+        h2{
+            text-align: center;
+            font-size: 2em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        input {
+            margin-top: 10px;
+            width: 50%;
+            display: block;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin-top: 5px;
+            background-color: red;
+            color: antiquewhite;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Management System</h2>
+
+    <form id="studentForm">
+        <input type="hidden" id="index" />
+        <label>Name: <input type="text" id="name" required /></label><br />
+        <label>Age: <input type="number" id="age" required /></label><br />
+        <label>Class: <input type="text" id="class" required /></label><br />
+        <label>Grade: <input type="text" id="grade" required /></label><br />
+        <button type="submit">Save Student</button>
+    </form>
+
+    <h3>Search Student</h3>
+    <input type="text" id="search" placeholder="Enter name to search..." />
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Class</th>
+                <th>Grade</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+    </table>
+
+    <script>
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+
+        const studentForm = document.getElementById('studentForm');
+        const studentTable = document.getElementById('studentTable');
+        const searchInput = document.getElementById('search');
+
+        function renderTable(data = students) {
+            studentTable.innerHTML = "";
+            data.forEach((student, index) => {
+                const row = `<tr>
+        <td>${student.name}</td>
+        <td>${student.age}</td>
+        <td>${student.class}</td>
+        <td>${student.grade}</td>
+        <td>
+          <button onclick="editStudent(${index})">Edit</button>
+          <button onclick="deleteStudent(${index})">Delete</button>
+        </td>
+      </tr>`;
+                studentTable.innerHTML += row;
+            });
+        }
+
+        studentForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const age = document.getElementById('age').value;
+            const studentClass = document.getElementById('class').value.trim();
+            const grade = document.getElementById('grade').value.trim();
+            const index = document.getElementById('index').value;
+
+            const newStudent = { name, age, class: studentClass, grade };
+
+            if (index === "") {
+                students.push(newStudent);
+            } else {
+                students[index] = newStudent;
+            }
+
+            localStorage.setItem('students', JSON.stringify(students));
+            renderTable();
+            studentForm.reset();
+            document.getElementById('index').value = "";
+        });
+
+        function editStudent(index) {
+            const student = students[index];
+            document.getElementById('name').value = student.name;
+            document.getElementById('age').value = student.age;
+            document.getElementById('class').value = student.class;
+            document.getElementById('grade').value = student.grade;
+            document.getElementById('index').value = index;
+        }
+
+        function deleteStudent(index) {
+            if (confirm("Are you sure to delete this student?")) {
+                students.splice(index, 1);
+                localStorage.setItem('students', JSON.stringify(students));
+                renderTable();
+            }
+        }
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase();
+            const filtered = students.filter(student =>
+                student.name.toLowerCase().includes(searchTerm)
+            );
+            renderTable(filtered);
+        });
+
+        renderTable();
+    </script>
+
+</body>
+
+</html>

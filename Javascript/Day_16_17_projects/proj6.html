@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_6</title>
+  <style>
+    body {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+    }
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dark Mode Toggle</h1>
+    <button id="toggleBtn">Toggle Dark Mode / Light Mode</button>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleBtn');
+const body = document.body;
+
+
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark-mode');
+}
+
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+
+  if (body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
+});
+
+  </script>
+</body>
+</html>

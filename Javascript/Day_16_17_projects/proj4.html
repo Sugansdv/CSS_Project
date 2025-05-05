@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_4</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            background: lightblue;
+        }
+
+        .slider {
+            position: relative;
+            width: 600px;
+            height: 400px;
+        }
+
+        .slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        button.prev,
+        button.next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        button.prev {
+            left: 10px;
+        }
+
+        button.next {
+            right: 10px;
+        }
+
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .thumb {
+            width: 60px;
+            height: 40px;
+            margin: 5px;
+            object-fit: cover;
+            opacity: 0.5;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <div class="slides">
+            <img src="./assets/image1.png" class="slide active">
+            <img src="./assets/image2.png" class="slide">
+            <img src="./assets/image3.png" class="slide">
+            <img src="./assets/image4.png" class="slide">
+        </div>
+
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+
+        <div class="thumbnails">
+            <img src="./assets/image1.png" class="thumb active">
+            <img src="./assets/image2.png" class="thumb">
+            <img src="./assets/image3.png" class="thumb">
+            <img src="./assets/image4.png" class="thumb">
+        </div>
+    </div>
+
+    <script>
+        let current = 0;
+        const slides = document.querySelectorAll('.slide');
+        const thumbs = document.querySelectorAll('.thumb');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+                thumbs[i].classList.toggle('active', i === index);
+            });
+            current = index;
+        }
+
+        prev.addEventListener('click', () => {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        });
+
+        next.addEventListener('click', () => {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        });
+
+        thumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => showSlide(index));
+        });
+
+        setInterval(() => {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }, 3000);
+
+    </script>
+</body>
+
+</html>

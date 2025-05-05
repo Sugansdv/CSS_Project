@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_8</title>
+    <style>
+        body {
+            margin: 30px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        input,
+        select {
+            padding: 5px;
+            margin: 5px 0;
+            width: 50%;
+        }
+        .sv-btn{
+            background-color: darkgreen;
+        }
+
+        button {
+            background-color: red;
+            color: antiquewhite;            
+            padding: 6px 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Task Manager / To-Do List</h2>
+
+    <form id="taskForm">
+        <input type="hidden" id="editIndex">
+        <label>Task: <input type="text" id="task" required></label><br><br>
+        <label>Category:
+            <select id="category" required>
+                <option value="">Select</option>
+                <option>Work</option>
+                <option>Personal</option>
+                <option>Study</option>
+            </select>
+        </label><br><br>
+        <label>Due Date: <input type="date" id="dueDate" required></label><br><br>
+        <button type="submit" class="sv-btn">Save Task</button>
+    </form>
+
+    <h3>Filter Tasks</h3>
+    <label>Status:
+        <select id="statusFilter">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="incomplete">Incomplete</option>
+        </select>
+    </label><br>
+    <label>Category:
+        <select id="categoryFilter">
+            <option value="all">All</option>
+            <option>Work</option>
+            <option>Personal</option>
+            <option>Study</option>
+        </select>
+    </label>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Category</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="taskTable"></tbody>
+    </table>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        const taskForm = document.getElementById('taskForm');
+        const taskTable = document.getElementById('taskTable');
+        const statusFilter = document.getElementById('statusFilter');
+        const categoryFilter = document.getElementById('categoryFilter');
+
+        function renderTable() {
+            let filteredTasks = [...tasks];
+
+            const status = statusFilter.value;
+            const category = categoryFilter.value;
+
+            if (status !== 'all') {
+                filteredTasks = filteredTasks.filter(task =>
+                    status === 'completed' ? task.completed : !task.completed
+                );
+            }
+
+            if (category !== 'all') {
+                filteredTasks = filteredTasks.filter(task => task.category === category);
+            }
+
+            filteredTasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+
+            taskTable.innerHTML = "";
+
+            filteredTasks.forEach((task, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+        <td class="${task.completed ? 'completed' : ''}">${task.text}</td>
+        <td>${task.category}</td>
+        <td>${task.dueDate}</td>
+        <td>
+          <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleComplete(${index})">
+        </td>
+        <td>
+          <button onclick="editTask(${index})">Edit</button>
+          <button onclick="deleteTask(${index})">Delete</button>
+        </td>
+      `;
+                taskTable.appendChild(row);
+            });
+        }
+
+        taskForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const text = document.getElementById('task').value.trim();
+            const category = document.getElementById('category').value;
+            const dueDate = document.getElementById('dueDate').value;
+            const editIndex = document.getElementById('editIndex').value;
+
+            const newTask = { text, category, dueDate, completed: false };
+
+            if (editIndex === "") {
+                tasks.push(newTask);
+            } else {
+                tasks[editIndex] = { ...tasks[editIndex], ...newTask };
+            }
+
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTable();
+            taskForm.reset();
+            document.getElementById('editIndex').value = "";
+        });
+
+        function editTask(index) {
+            const task = tasks[index];
+            document.getElementById('task').value = task.text;
+            document.getElementById('category').value = task.category;
+            document.getElementById('dueDate').value = task.dueDate;
+            document.getElementById('editIndex').value = index;
+        }
+
+        function deleteTask(index) {
+            if (confirm("Delete this task?")) {
+                tasks.splice(index, 1);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                renderTable();
+            }
+        }
+
+        function toggleComplete(index) {
+            tasks[index].completed = !tasks[index].completed;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTable();
+        }
+
+        statusFilter.addEventListener('change', renderTable);
+        categoryFilter.addEventListener('change', renderTable);
+
+        renderTable();
+    </script>
+
+</body>
+
+</html>

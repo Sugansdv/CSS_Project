@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_3</title>
+    <style>
+        body {
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.music-player {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+
+#song-title {
+    font-size: 35px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#song-duration {
+    font-size: 20px;
+    color: gray;
+}
+
+.controls {
+    margin: 20px 0;
+}
+
+.controls button {
+    background-color: black;
+    color: white;
+    padding: 10px 12px;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.controls button:hover {
+    background-color: greenyellow;
+    color: black;
+}
+
+
+
+.volume-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: gray;
+}
+
+#volume {
+    width: 100%;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="music-player">
+        <div class="song-info">
+            <span id="song-title">Song Title</span>
+            <span id="song-duration">0:00</span>
+        </div>
+        <audio id="audio-player" src="./assets/ssstik-io-1727722296828-66686.mp3"></audio>
+        <div class="controls">
+            <button id="prev-btn">Previous</button>
+            <button id="play-btn">Play</button>
+            <button id="pause-btn" style="display:none;">Pause</button>
+            <button id="stop-btn">Stop</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div class="volume-control">
+            <label for="volume">Volume</label>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+        </div>
+    </div>
+
+    <script>
+        const playButton = document.getElementById('play-btn');
+        const pauseButton = document.getElementById('pause-btn');
+        const stopButton = document.getElementById('stop-btn');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const volumeControl = document.getElementById('volume');
+        const audioPlayer = document.getElementById('audio-player');
+        const songTitle = document.getElementById('song-title');
+        const songDuration = document.getElementById('song-duration');
+
+
+        const songs = [
+            { title: 'Song 1', src: './assets/ssstik-io-1727722296828-66686.mp3' },
+            { title: 'Song 2', src: './assets/hangoverin-6htsrhvu-6511.mp3' },
+            { title: 'Song 3', src: './assets/cute-flute-3346.mp3' },
+
+        ];
+
+        let currentSongIndex = 0;
+
+        function updateSongInfo() {
+            songTitle.textContent = songs[currentSongIndex].title;
+            audioPlayer.src = songs[currentSongIndex].src;
+            audioPlayer.load();
+            audioPlayer.onloadedmetadata = function () {
+                let minutes = Math.floor(audioPlayer.duration / 60);
+                let seconds = Math.floor(audioPlayer.duration % 60);
+                songDuration.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+            };
+        }
+
+        function playSong() {
+            audioPlayer.play();
+            playButton.style.display = 'none';
+            pauseButton.style.display = 'inline-block';
+        }
+
+        function pauseSong() {
+            audioPlayer.pause();
+            playButton.style.display = 'inline-block';
+            pauseButton.style.display = 'none';
+        }
+
+        function stopSong() {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+            playButton.style.display = 'inline-block';
+            pauseButton.style.display = 'none';
+        }
+
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            updateSongInfo();
+            playSong();
+        }
+
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            updateSongInfo();
+            playSong();
+        }
+
+        volumeControl.addEventListener('input', function () {
+            audioPlayer.volume = volumeControl.value;
+        });
+
+        playButton.addEventListener('click', playSong);
+        pauseButton.addEventListener('click', pauseSong);
+        stopButton.addEventListener('click', stopSong);
+        prevButton.addEventListener('click', prevSong);
+        nextButton.addEventListener('click', nextSong);
+
+        updateSongInfo();
+
+    </script>
+</body>
+
+</html>

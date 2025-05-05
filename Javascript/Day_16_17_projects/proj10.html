@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project_10</title>
+  <style>
+    body {
+      padding: 20px;
+    }
+    .controls, .employee-table {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .controls {
+      padding: 20px;
+    }
+    .employee-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .employee-table th, .employee-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .employee-table th {
+      background: darkblue;
+      color: white;
+    }
+    
+    .present {
+      color: green;
+      font-weight: bold;
+    }
+    .absent {
+      color: red;
+      font-weight: bold;
+    }
+    button, select, input {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      font-weight: bold;
+    }
+    .add-employee-btn {
+      background: darkblue;
+      color: white;
+      margin-bottom: 15px;
+      border: none;
+    }
+    .present-btn {
+      background: green;
+      color: white;
+      border: none;
+    }
+    .absent-btn {
+      background: red;
+      color: white;
+      border: none;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background: white;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .close {
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .submit-btn {
+      background: green;
+      color: white;
+      width: 100%;
+      border: none;
+      padding: 10px 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Employee Attendance Management System</h1>
+
+  <div class="controls">
+    <button class="add-employee-btn" onclick="openModal()">Add New Employee</button>
+
+    <div style="margin-top: 15px;">
+      <label for="filter-dept">Filter by Department:</label>
+      <select id="filter-dept" onchange="filterEmployees()">
+        <option value="">All Departments</option>
+      </select>
+
+      <label for="filter-status">Filter by Status:</label>
+      <select id="filter-status" onchange="filterEmployees()">
+        <option value="">All Status</option>
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+      </select>
+    </div>
+  </div>
+
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Today's Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="employeeTableBody"></tbody>
+  </table>
+
+  <div id="employeeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Add New Employee</h2>
+      <form id="employeeForm">
+        <div class="form-group">
+          <label for="empId">Employee ID:</label>
+          <input type="text" id="empId" required />
+        </div>
+        <div class="form-group">
+          <label for="empName">Full Name:</label>
+          <input type="text" id="empName" required />
+        </div>
+        <div class="form-group">
+          <label for="empDept">Department:</label>
+          <input type="text" id="empDept" required />
+        </div>
+        <button type="submit" class="submit-btn">Add Employee</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let employees = [
+      { id: "1", name: "Dharun", department: "IT", attendance: [], status: "" },
+      { id: "2", name: "Vishwa", department: "HR", attendance: [], status: "" },
+      { id: "3", name: "Sugan", department: "Finance", attendance: [], status: "" },
+      { id: "4", name: "Eva", department: "Marketing", attendance: [], status: "" }
+    ];
+
+    if (localStorage.getItem('employeeData')) {
+      employees = JSON.parse(localStorage.getItem('employeeData'));
+    } else {
+      const today = new Date().toISOString().split('T')[0];
+      employees.forEach(emp => {
+        const isPresent = Math.random() > 0.3;
+        emp.attendance = isPresent ? [today] : [];
+        emp.status = isPresent ? "Present" : "Absent";
+      });
+      saveData();
+    }
+
+    const employeeTableBody = document.getElementById('employeeTableBody');
+    const filterDeptSelect = document.getElementById('filter-dept');
+    const filterStatusSelect = document.getElementById('filter-status');
+    const modal = document.getElementById('employeeModal');
+    const employeeForm = document.getElementById('employeeForm');
+
+    function init() {
+      renderEmployees(employees);
+      populateDepartments();
+    }
+
+    function renderEmployees(empList) {
+      employeeTableBody.innerHTML = '';
+
+      if (empList.length === 0) {
+        employeeTableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">No employees found</td></tr>';
+        return;
+      }
+
+      empList.forEach(employee => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${employee.id}</td>
+          <td>${employee.name}</td>
+          <td>${employee.department}</td>
+          <td class="${employee.status.toLowerCase()}">${employee.status || '-'}</td>
+          <td class="action-btns">
+            <button class="present-btn" onclick="markAttendance('${employee.id}', 'Present')">Present</button>
+            <button class="absent-btn" onclick="markAttendance('${employee.id}', 'Absent')">Absent</button>
+          </td>`;
+        employeeTableBody.appendChild(row);
+      });
+    }
+
+    function populateDepartments() {
+      const departments = [...new Set(employees.map(emp => emp.department))];
+      departments.forEach(dept => {
+        const option = document.createElement('option');
+        option.value = dept;
+        option.textContent = dept;
+        filterDeptSelect.appendChild(option);
+      });
+    }
+
+    function filterEmployees() {
+      const dept = filterDeptSelect.value;
+      const status = filterStatusSelect.value;
+      let filtered = employees;
+
+      if (dept) filtered = filtered.filter(e => e.department === dept);
+      if (status) filtered = filtered.filter(e => e.status === status);
+
+      renderEmployees(filtered);
+    }
+
+    function markAttendance(empId, status) {
+      const employee = employees.find(e => e.id === empId);
+      if (!employee) return;
+
+      const today = new Date().toISOString().split('T')[0];
+      if (status === "Present") {
+        if (!employee.attendance.includes(today)) employee.attendance.push(today);
+      } else {
+        employee.attendance = employee.attendance.filter(date => date !== today);
+      }
+      employee.status = status;
+      saveData();
+      filterEmployees();
+    }
+
+    function addEmployee(e) {
+      e.preventDefault();
+
+      const empId = document.getElementById('empId').value;
+      const empName = document.getElementById('empName').value;
+      const empDept = document.getElementById('empDept').value;
+
+      if (employees.some(emp => emp.id === empId)) {
+        alert('Employee ID already exists!');
+        return;
+      }
+
+      employees.push({ id: empId, name: empName, department: empDept, attendance: [], status: "" });
+      saveData();
+      employeeForm.reset();
+      closeModal();
+      populateDepartments();
+      filterEmployees();
+    }
+
+    function saveData() {
+      localStorage.setItem('employeeData', JSON.stringify(employees));
+    }
+
+    function openModal() {
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    employeeForm.addEventListener('submit', addEmployee);
+
+    window.onclick = function(e) {
+      if (e.target == modal) closeModal();
+    }
+
+    init();
+  </script>
+</body>
+</html>
