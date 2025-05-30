@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import loginGif from './images/loginLogo.gif';
+import loginGif from '../images/loginLogo.gif';
 
 const syl = {
   fontFamily: 'Quicksand,FontAwesome'
