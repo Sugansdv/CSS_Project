@@ -1,0 +1,336 @@
+*{
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+        }
+        .main2{
+            display: flex;
+            height: 100vh;
+        }
+        .mainbox1{
+            background-color: #455a64;
+            width: 15%;
+            padding: 30px 20px;
+        }
+        .manisubbx p{
+            color: white;
+        }
+        .manisubbx p:hover{
+            color: rgb(251, 255, 11);
+        }
+        .mainbox2{
+           background-color: #ffffff; 
+           width: 85%;  
+        }
+        .mainsubbx21{
+            height: 13%;
+            padding: 20px;
+            text-align: center;
+            align-content: center;
+            background-color: white;
+            
+        }
+        .mainbx2{
+             display: flex;
+        }
+        .color{
+        background-color: #feeba8;
+        margin: 0px 20px;
+        }
+
+        .mainsubbx22{
+            background-color: #feeba8;
+            height: 76%;
+        }
+        .paybox1{
+           display: flex;
+           padding: 50px;
+        }
+     .paybox11{
+        width: 70%;
+     } 
+     .paybox11>table>tbody>tr>th{
+        text-align: start;
+     } 
+     .paybox12{
+        width: 30%;
+     }  
+     .paybox2{
+        text-align: center;
+     }
+     .paybox2 table{
+       margin: 0px 20px;
+        width: 96%;
+        height: 100px;
+        border-collapse: collapse;
+     }
+     .paybox2 th{
+        background-color: #f8cc14;
+        border: 1px solid black;
+        width: 25%;
+        height: 22%;
+     }
+     .paybox2 td{
+        border: 1px solid black;
+        background-color: #f8cd70;
+     }
+    .tablerow2 td{
+        background-color: #f8cc14;
+        border: 1px solid black;
+        height: 18%;
+    }
+    .mainbox222{
+        
+        padding-bottom: 0;
+    }
+    
+    .savebtn{
+        background-color: #f8cc14;
+        color: white;
+        border: none;
+        width: 20%;
+        border-radius: 5px;
+        margin: 20px 10px;
+        padding: 10px;
+    }
+    .downloadbtn{
+        background-color: #455a64;
+        color: white;
+        width: 20%;
+        border: none;
+        border-radius: 5px;
+        margin: 20px 10px;
+        padding: 10px;
+    }
+    .total{
+        text-align: end;
+        margin: 30px 100px;
+    }
+
+   /* Small devices (phones, up to 576px) */
+@media (max-width: 576px) {
+    .main2 {
+        flex-direction: column; 
+        height: auto; 
+    }
+
+    .main2 .mainbox1 {
+        width: 100%; 
+        padding: 15px 10px;
+        border: none; 
+        display: flex; 
+        justify-content: space-around; 
+    }
+
+    .main2 .mainbox1 .manisubbx {
+        margin-bottom: 0; 
+        text-align: center;
+    }
+
+    .main2 .mainbox1 .manisubbx p {
+        font-size: 14px; 
+    }
+
+    .main2 .mainbox1 .manisubbx img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+
+    .main2 .mainbox2 {
+        width: 100%; 
+        margin-top: 10px; 
+        border: none; 
+    }
+
+   .main2 .mainsubbx21 {
+        height: auto;
+        
+        padding: 10px;
+        text-align: center;
+        align-content: center; 
+    }
+
+    .main2 .mainsubbx22 {
+        height: auto; 
+        padding-bottom: 20px; 
+    }
+    .btns{
+        padding: 10px;
+    }
+
+   .main2 .paybox1 {
+        flex-direction: column; 
+        padding: 15px; 
+    }
+
+    .main2 .paybox11,
+    .paybox12 {
+        width: 100%; 
+        margin-bottom: 15px;
+    }
+
+   .main2 .paybox1 table {
+        width: 100%;
+    }
+
+    .paybox2 {
+        text-align: center;
+        overflow-x: auto; 
+    }
+
+    .paybox2 table {
+        width: 100%;
+        margin: 0;
+        height: auto; 
+        display: block;
+        white-space: nowrap; 
+    }
+
+    .paybox2 th,
+    .paybox2 td {
+        min-width: 100px; 
+        padding: 8px; 
+        height: auto; 
+    }
+
+    .savebtn,
+    .downloadbtn {
+        width: 80%; 
+        margin: 10px auto; 
+        display: block;
+        padding: 10px;
+    }
+
+    .total {
+        text-align: center;
+        margin: 20px 0; 
+    }
+}
+
+/* Medium devices (tablets, 577px to 992px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .main2 {
+        flex-direction: column; 
+        height: auto;
+    }
+
+   .main2 .mainbox1 {
+        width: 100%; 
+        padding: 20px 15px;
+        border: none;
+        display: flex;
+        justify-content: space-around;
+    }
+
+   .main2 .mainbox1 .manisubbx {
+        margin-right: 20px;
+    }
+
+   .main2 .mainbox2 {
+        width: 100%; 
+        margin-top: 15px;
+        border: none;
+    }
+
+   .main2 .mainsubbx21 {
+        height: auto;
+        padding: 15px;
+        text-align: center;
+    }
+
+   .main2 .mainsubbx22 {
+        height: auto;
+        margin: 20px 15px;
+        padding-bottom: 30px;
+    }
+
+   .main2 .paybox1 {
+        flex-direction: row;
+        padding: 25px;
+        flex-wrap: wrap; 
+    }
+
+    .main2 .paybox11,
+    .paybox12 {
+        width: 48%;
+        margin-bottom: 15px;
+    }
+
+   .main2 .paybox1 table {
+        width: 100%;
+    }
+
+  .main2  .paybox2 th,
+    .paybox2 td {
+        min-width: 120px; 
+        padding: 10px;
+    }
+
+   .main2 .savebtn,
+    .downloadbtn {
+        width: 30%; 
+        margin: 20px 10px;
+        display: inline-block; 
+        padding: 12px;
+    }
+
+    .total {
+        text-align: end;
+        margin: 30px 50px; 
+    }
+}
+
+/* Large devices (desktops, 993px and up) */
+@media (min-width: 993px) {
+    .main2 {
+        flex-direction: row; 
+        height: 100vh;
+    }
+   .main2 .mainbox1 {
+        width: 15%; 
+        padding: 30px 20px;
+        display: block; 
+    }
+
+   .main2 .mainbox2 {
+        width: 85%;
+        margin-top: 0;
+    }
+
+   .main2 .mainsubbx21 {
+        height: 13%;
+  
+        text-align: center;
+        align-content: center;
+    }
+
+    
+  .main2  .paybox1 {
+        display: flex; 
+        padding: 50px; 
+    }
+
+  .main2  .paybox11 {
+        width: 70%; 
+    }
+
+   .main2 .paybox12 {
+        width: 30%; 
+    }
+
+   .main2 .paybox2 {
+        text-align: center;
+        overflow-x: visible; 
+    }
+
+   .main2 .paybox2 th {
+        width: 25%;
+        height: 22%;
+    }
+
+    .tablerow2 td {
+        height: 18%;
+    }
+
+}

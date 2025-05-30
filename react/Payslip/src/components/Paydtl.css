@@ -1,0 +1,188 @@
+*{
+            margin: 0;
+            padding: 0;
+        }
+        .main1{
+            display: flex;
+            height: 100vh;
+        }
+      .mainbox1{
+            background-color: #455a64;
+            width: 15%;
+            padding: 30px 20px;
+        }
+       .main1 .mainbox2{
+        background-color: #ffffff; 
+           width: 85%;
+        }
+       .main1 .mainsubbx21{
+            display: flex;
+            justify-content: space-between;
+            background-color: #feeba8;
+            height: 13%;
+            margin: 25px 20px;
+            align-items: center;
+        }
+       .main1 .mainbx2{
+             display: flex;
+        }
+
+       .main1 .mainsubbx22{
+            background-color: #feeba8;
+            height: 75%;
+            margin: 20px 20px;
+        }
+        
+       .main1 .smallbx{
+            background-color:transparent;
+            font-weight: bold;
+            height: 5rem;
+            width: 100%;
+            border-radius: 10px;
+            align-items: center;
+            padding: 10px;
+        }
+
+       .mainsubx21{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+       .mainsubx22{
+            display: flex;
+            padding: 30px 10px;
+            justify-content: center;     
+        }
+   .monthbtn{
+            background-color: #455a64;
+            border: none;
+            color: white;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            
+        }
+      .dwnldbtn{
+            background-color: #f8cc14;
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    .submitbtn{
+            background-color: #f8cc14;
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            width: 15%;
+            font-weight: bold;
+        }
+    .cancelbtn{
+            background-color: #455a64;
+            border: none;
+            color: white;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            width: 15%;
+            font-weight: bold;
+        }
+        .main1 input{
+            background: transparent;
+            border: 1px solid black;
+            margin: 5px 0px;
+            width: 70%;
+            height: 60%;
+            padding: 5px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+/* Small devices (mobile) */
+@media (max-width: 576px) {
+    .main1 {
+        flex-direction: column;
+        height: auto;
+    }
+
+   .main1 .mainbox1 {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .main1 .mainbox1 .manisubbx p {
+        font-size: 14px; 
+    }
+
+    .main1 .mainbox1 .manisubbx img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+   .main1 .mainbox2 {
+        width: 100%;
+    }
+    
+   .main1 .mainsubbx21 {
+        flex-direction: column;
+        height: auto;
+        margin: 10px 10px;
+    }
+
+   .main1 .mainsubx21 {
+        grid-template-columns: 1fr;
+    }
+.mainsubx22{
+    flex-direction: column;
+}
+.submitbtn{
+    width: 98%;
+}
+.cancelbtn{
+    width: 98%;
+}
+   .main1 .smallbx {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .main1 input{
+        width: 100%;
+        }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .main1 {
+        flex-direction: column;
+        height: auto;
+    }
+
+   .main1 .mainbox1 {
+        width: 100%;
+        padding: 15px;
+    }
+
+   .main1 .mainbox2 {
+        width: 100%;
+    }
+
+   .main1 .mainsubbx21 {
+        flex-direction: column;
+        height: auto;
+        margin: 15px 0;
+    }
+
+   .main1 .mainsubx21 {
+        grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    }
+
+   .main1 .smallbx {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,295 @@
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            display: flex;
+            height: 100vh;
+        }
+        .manisubbx{
+            margin-bottom: 10px;
+            
+        }
+        .manisubbx img{
+            margin-right: 20px;
+        }
+        .main .mainbox1{
+            background-color: #455a64;
+            width: 15%;
+            padding: 30px 20px;
+        }
+        .main .mainbox2{
+           background-color: #ffffff; 
+           width: 85%;
+        }
+        .main .mainsubbx21{
+            display: flex;
+            justify-content: space-between;
+            background-color: #feeba8;
+            height: 13%;
+            margin: 25px 20px;
+            align-items: center;
+        }
+        .main .mainsubbx21 div>h2{
+            padding: 10px;
+        }
+        .main .mainbx2{
+             display: flex;
+             align-items: center;
+             justify-content: space-around;
+             width: 35%;
+        }
+        .mainbx2 img{
+             height: 40px;
+        }
+
+        .main .mainsubbx22{
+            background-color: #feeba8;
+            height: 78%;
+            margin: 20px 20px;
+        }
+        .main .mainsubx21{
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+        }
+        .main .smallbx{
+            display: flex;
+            background-color: #f8cc14;
+            font-weight: bold;
+            height: 5rem;
+            width: 100%;
+            border-radius: 10px;
+            align-items: center;
+            padding: 10px;
+        }
+       .main .smallbx p{
+            font-size: 1.5rem;
+            padding: 0px 10px;
+        }
+      .main  .smallbx img{
+            padding: 0px 12px;
+            margin-left: 20px;
+            background-color: #455a64;
+            border-radius: 50%;
+            height: 90%;
+            width: 25%;
+        }
+
+        .main .smallbx2{
+            padding: 10px;
+        }
+        .main .smallbx2>p{
+            color: red;
+        }
+       .main .mainsubx21{
+            display: flex;
+            padding: 10px 10px;
+        }
+        .main .mainsubx21 h5{
+            padding: 10px;
+            font-size: 18px;
+        }
+      .main  .calender{
+            width: 50%;
+            margin: 55px 45px 5px 45px;
+            background-color:#f7dd80;
+            padding: 5px;
+            height: 20%;
+        }
+        .header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:#f7dd80;
+        }
+        .header button{
+            background:none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .header select{
+            font-size: 18px;
+            padding: 0px 8px;
+            background-color:#f7dd80;
+            border-radius: 4px;
+            margin: 0px 10px;
+            border: none;
+        }
+        .daysofweek{
+            display: grid;
+            grid-template-columns: repeat(7,1fr);
+            text-align: center;
+            font-weight: bold;
+            padding: 10px;
+            background-color:#f7dd80;
+        }
+        .day{
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .day:hover{
+            background-color: rgb(78, 78, 244);
+            color: white;
+            border-radius: 50%;
+        }
+        .days{
+            display: grid;
+            grid-template-columns: repeat(7,1fr);
+            gap: 5px;
+            
+        }
+       .main .meeting{
+            width: 50%;
+            padding: 10px;
+            margin: 5px 40px;
+        }
+       .main .smallbx2{
+            display: flex;
+            justify-content: space-between;
+        }
+       .main .smallbx21{
+            margin: 10px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 3.5rem;
+        }
+       .main .meetback{
+            padding: 5px;
+            background-color: #ffda8a;
+        }
+       .main .time{
+            align-items: center;
+            font-size: 14px;
+            padding: 5px;
+            width: 4rem;
+            height: 3.5rem;
+            align-content: center;
+        }
+
+      .main input{
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+   
+    @media (max-width: 576px){
+        .main {
+        flex-direction: column;
+        height: auto;
+    }
+    .main .mainbox1{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 15px 10px;
+        }
+        .main .manisubbx {
+        margin-bottom: 0; 
+        text-align: center;
+    }
+    .main .mainbox1 .manisubbx p {
+        font-size: 14px; 
+    }
+
+    .main .mainbox1 .manisubbx img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+
+    .main .mainbox2 {
+        width: 100%; 
+        margin-top: 10px; 
+        border: none; 
+    }
+    .main .mainsubbx21 {
+        height: auto;
+        margin: 15px 10px;
+        padding: 10px;
+        text-align: center;
+        align-content: center;
+        flex-direction: column;
+    }
+        .main .mainbx2{
+             align-items: center;
+             justify-content: space-around;
+             width: 100%;
+        }
+        .main .mainsubx21{
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 15px;
+        }
+        .main  .calender{
+            width: 100%;
+            margin:auto;
+        }
+        .main .meeting{
+            width: 100%;
+            margin: auto;
+        }
+    }
+
+    @media (min-width: 577px) and (max-width: 768px){
+            .main {
+        flex-direction: column;
+        height: auto;
+    }
+    .main .mainbox1{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            padding: 15px 10px;
+        }
+        .main .manisubbx {
+        margin-bottom: 0; 
+        text-align: center;
+    }
+    .main .mainbox1 .manisubbx p {
+        font-size: 14px; 
+    }
+
+    .main .mainbox1 .manisubbx img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+
+    .main .mainbox2 {
+        width: 100%; 
+        margin-top: 10px; 
+        border: none; 
+    }
+    .main .mainsubbx21 {
+        height: auto;
+        margin: 15px 10px;
+        padding: 10px;
+        text-align: center;
+        align-content: center;
+        flex-direction: column;
+    }
+        .main .mainbx2{
+             align-items: center;
+             justify-content: space-around;
+             width: 100%;
+        }
+        .main .mainsubx21{
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 15px;
+        }
+        .main  .calender{
+            width: 100%;
+            margin:auto;
+        }
+        .main .meeting{
+            width: 100%;
+            margin: auto;
+        }
+    }
+   

@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+
+.loginmain{
+    display: flex;
+    background-color: #f1c9ae;
+}
+
+.loginmain img{
+    border-radius: 50%;
+    width: 90%;
+}
+.loginbox1{
+    width: 50%;
+    padding: 100px;
+
+}
+.loginbox2{
+    width: 50%;
+    align-items: center;
+    align-content: center;
+}
+.loginbox2 form{
+     width: 60%;
+     height: 60%;
+    align-items: center;
+    align-content: center;
+
+}
+.loginbox2 h1{
+    margin-left: 25%;
+}
+.loginbtn{
+    background-color: #f8cc14;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.loginbox2 input{
+    background: transparent;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 20px 0px;
+    position: relative;
+    font-size: 20px;
+    font-weight: 400;
+}
+.loginbox2 p{
+    text-align: end;
+}
+
+.logform img{
+    position: absolute;
+    width: 20px;
+}
+
+.password-input-wrapper {
+    position: relative; 
+    width: 100%; 
+    margin-bottom: 10px; 
+    display: inline-block; 
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    padding-right: 60px; 
+    box-sizing: border-box; 
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #666; 
+    user-select: none; 
+}
+
+.password-toggle:hover {
+    color: #333;
+}
+
+@media (max-width: 768px){
+    .loginmain{
+    flex-direction: column;
+}
+
+.loginbox1{
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    justify-items: center;
+}
+.loginbox2{
+    width: 100%;
+    justify-items: center;
+    padding: 20px;
+}
+}
+@media (max-width: 1200px){
+    
+}
