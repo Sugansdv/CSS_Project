@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
-import homeIcon from '../assets/home.png';
+import homeIcon from '../assets/Home.png';
 import productsIcon from '../assets/products.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
