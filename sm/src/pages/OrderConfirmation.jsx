@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import orderImage from '../assets/completed.png';
 import { useNavigate, useLocation} from 'react-router-dom';
 import '../App.css'
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 const OrderConfirmation = () => {
   const [customer, setCustomer] = useState({});

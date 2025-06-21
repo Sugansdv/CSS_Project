@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import cashImg from '../assets/cash.png';
 import cardImg from '../assets/card.png';
 import draftImg from '../assets/draft.png';
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 const PaymentPage = () => {
   const navigate = useNavigate();

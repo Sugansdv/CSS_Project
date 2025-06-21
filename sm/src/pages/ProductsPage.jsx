@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaPlus, FaMinus, FaShoppingCart } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import '../App.css'
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 const initialProducts = [
   { name: "Dairy Milk", quantity: 2, rate: 100, tax: 20 },

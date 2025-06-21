@@ -7,13 +7,12 @@ import InvoiceGenerator from './components/InvoiceGenerator';
 import Sidebar from './components/Sidebar';
 import PaymentPage from './pages/PaymentPage';
 import ThankYouPage from './pages/ThankyouPage';
-import { HelmetProvider } from 'react-helmet-async';
+
 import './App.css';
 
 const App = () => {
    
   return (
-    <HelmetProvider>
 
       <Router>
       <div className="d-flex">
@@ -31,7 +30,6 @@ const App = () => {
         </div>
       </div>
     </Router>
-    </HelmetProvider>
     
   );
 };

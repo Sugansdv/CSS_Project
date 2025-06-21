@@ -2,7 +2,7 @@ import React from 'react';
 import ThankyouImage from '../assets/thank you.png';
 import { useNavigate } from 'react-router-dom';
 import '../App.css'
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet';
 
 const ThankYouPage = () => {
   const navigate = useNavigate();
