@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import priyaImg from "../../assets/images/img 1.png";
-import rithikaImg from "../../assets/images/img 2.png";
-import reshmaImg from "../../assets/images/img 3.png";
+import rithikaImg from "../../assets/images/Img 2.png";
+import reshmaImg from "../../assets/images/Img 3.png";
 import { useNavigate } from "react-router-dom";
 
 const OverviewRow2 = () => {
